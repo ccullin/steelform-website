@@ -6,7 +6,7 @@ export default {
   title: 'SteelForm Engineering CMS',
   
   // Project ID (this would come from your actual Sanity dashboard)
-  projectId: 'pf2xnwzy', // Your actual project ID goes here
+  projectId: 'YOUR_SANITY_PROJECT_ID', // Replace with your actual project ID
   
   // Dataset configuration
   dataset: 'production',
@@ -14,71 +14,41 @@ export default {
   // API version
   apiVersion: '2021-03-25',
   
-  // Schema definitions (using the schema we already created)
+  // Schema definitions (using our new schema structure)
   schema: {
     types: [
       // Homepage content
       {
-        name: 'homepage',
-        title: 'Homepage',
+        name: 'homePage',
+        title: 'Homepage', 
         type: 'document',
         fields: [
           {
             name: 'title',
-            title: 'Page Title',
+            title: 'Title',
             type: 'string'
           },
           {
-            name: 'tagline',
-            title: 'Tagline',
-            type: 'text'
-          },
-          {
-            name: 'heroImage',
-            title: 'Hero Image',
-            type: 'image',
-            options: {
-              hotspot: true
-            }
-          },
-          {
-            name: 'heroText',
-            title: 'Hero Text',
-            type: 'text'
-          },
-          {
-            name: 'services',
-            title: 'Services Section',
-            type: 'array',
-            of: [
+            name: 'heroBanner',
+            title: 'Hero Banner',
+            type: 'object',
+            fields: [
               {
-                type: 'object',
-                fields: [
-                  {
-                    name: 'title',
-                    title: 'Service Title',
-                    type: 'string'
-                  },
-                  {
-                    name: 'description',
-                    title: 'Description',
-                    type: 'text'
-                  },
-                  {
-                    name: 'image',
-                    title: 'Image',
-                    type: 'image',
-                    options: {
-                      hotspot: true
-                    }
-                  }
-                ]
+                name: 'images', 
+                title: 'Banner Images',
+                type: 'array',
+                of: [{type: 'image'}]
+              },
+              {
+                name: 'callToActionText',
+                title: 'Call to Action Text',
+                type: 'string'
               }
             ]
           },
           {
             name: 'aboutSection',
-            title: 'About Section',
+            title: 'About Section', 
             type: 'object',
             fields: [
               {
@@ -87,54 +57,111 @@ export default {
                 type: 'string'
               },
               {
-                name: 'description',
-                title: 'Description',
-                type: 'text'
+                name: 'content',
+                title: 'Content',
+                type: 'array',
+                of: [{type: 'block'}]
               },
               {
-                name: 'image',
-                title: 'Image',
-                type: 'image',
-                options: {
-                  hotspot: true
-                }
+                name: 'certificationLogo',
+                title: 'Certification Logo', 
+                type: 'image'
+              }
+            ]
+          },
+          {
+            name: 'productsSection',
+            title: 'Products Section',
+            type: 'object',
+            fields: [
+              {
+                name: 'title',
+                title: 'Title',
+                type: 'string'
+              },
+              {
+                name: 'products',
+                title: 'Products', 
+                type: 'array',
+                of: [{
+                  type: 'object',
+                  fields: [
+                    {
+                      name: 'name',
+                      title: 'Product Name',
+                      type: 'string'
+                    },
+                    {
+                      name: 'image',
+                      title: 'Product Image',
+                      type: 'image' 
+                    },
+                    {
+                      name: 'link',
+                      title: 'Link to Product Page',
+                      type: 'url'
+                    }
+                  ]
+                }]
               }
             ]
           },
           {
             name: 'contactSection',
             title: 'Contact Section',
-            type: 'object',
+            type: 'object',  
             fields: [
               {
                 name: 'title',
                 title: 'Title',
+                type: 'string' 
+              },
+              {
+                name: 'email',
+                title: 'Email',
+                type: 'string'
+              },
+              {
+                name: 'phone',
+                title: 'Phone Number', 
                 type: 'string'
               },
               {
                 name: 'address',
                 title: 'Address',
-                type: 'text'
-              },
+                type: 'text'  
+              }
+            ]
+          },
+          {
+            name: 'seo',
+            title: 'SEO',
+            type: 'object',
+            fields: [
               {
-                name: 'phone',
-                title: 'Phone Number',
+                name: 'metaTitle', 
+                title: 'Meta Title',
                 type: 'string'
               },
               {
-                name: 'email',
-                title: 'Email Address',
-                type: 'string'
+                name: 'metaDescription',
+                title: 'Meta Description',
+                type: 'text'  
               }
             ]
           }
-        ]
+        ],
+        preview: {
+          select: {
+            title: 'title'
+          }
+        }
       },
 
-      // Service pages
+      // Generic page
       {
-        name: 'service',
-        title: 'Service',
+        name: 'page', 
+        title: 'Page',
         type: 'document',
         fields: [
           {
@@ -147,11 +174,12 @@ export default {
             title: 'Slug',
             type: 'slug',
             options: {
-              source: 'title'
+              source: 'title',
+              maxLength: 96,
             }
           },
           {
-            name: 'description',
+            name: 'description', 
             title: 'Description',
             type: 'text'
           },
@@ -164,195 +192,225 @@ export default {
               {type: 'image'}
             ]
           }
-        ]
+        ],
+        preview: {
+          select: {
+            title: 'title' 
+          }
+        }
       },
 
-      // Team members
+      // Service offerings
       {
-        name: 'teamMember',
-        title: 'Team Member',
+        name: 'service',
+        title: 'Service', 
+        type: 'document',
+        fields: [
+          {
+            name: 'title',
+            title: 'Title', 
+            type: 'string'
+          },
+          {
+            name: 'slug',
+            title: 'Slug',
+            type: 'slug',
+            options: {
+              source: 'title',
+              maxLength: 96,
+            }
+          },
+          {
+            name: 'description',
+            title: 'Description',
+            type: 'text' 
+          },
+          {
+            name: 'content', 
+            title: 'Content',
+            type: 'array',
+            of: [
+              {type: 'block'},
+              {type: 'image'}
+            ]
+          }
+        ],
+        preview: {
+          select: {
+            title: 'title'
+          }
+        }
+      },
+
+      // Product categories
+      {
+        name: 'productCategory',
+        title: 'Product Category', 
+        type: 'document',
+        fields: [
+          {
+            name: 'title',
+            title: 'Title', 
+            type: 'string'
+          },
+          {
+            name: 'slug',
+            title: 'Slug',
+            type: 'slug',
+            options: {
+              source: 'title',
+              maxLength: 96,
+            }
+          },
+          {
+            name: 'description',
+            title: 'Description',
+            type: 'text' 
+          },
+          {
+            name: 'content', 
+            title: 'Content',
+            type: 'array',
+            of: [
+              {type: 'block'},
+              {type: 'image'}
+            ]
+          }
+        ],
+        preview: {
+          select: {
+            title: 'title'
+          }
+        }
+      },
+
+      // Individual products
+      {
+        name: 'product', 
+        title: 'Product',
+        type: 'document',
+        fields: [
+          {
+            name: 'title',
+            title: 'Title', 
+            type: 'string'
+          },
+          {
+            name: 'slug',
+            title: 'Slug',
+            type: 'slug',
+            options: {
+              source: 'title',
+              maxLength: 96,
+            }
+          },
+          {
+            name: 'category',
+            title: 'Category',
+            type: 'reference', 
+            to: [{type: 'productCategory'}]
+          },
+          {
+            name: 'description',
+            title: 'Description',
+            type: 'text' 
+          },
+          {
+            name: 'content', 
+            title: 'Content',
+            type: 'array',
+            of: [
+              {type: 'block'},
+              {type: 'image'}
+            ]
+          }
+        ],
+        preview: {
+          select: {
+            title: 'title'
+          }
+        }
+      },
+
+      // Brand information
+      {
+        name: 'brand', 
+        title: 'Brand',
         type: 'document',
         fields: [
           {
             name: 'name',
-            title: 'Name',
+            title: 'Brand Name', 
             type: 'string'
-          },
-          {
-            name: 'position',
-            title: 'Position',
-            type: 'string'
-          },
-          {
-            name: 'bio',
-            title: 'Biography',
-            type: 'text'
-          },
-          {
-            name: 'image',
-            title: 'Image',
-            type: 'image',
-            options: {
-              hotspot: true
-            }
-          }
-        ]
-      },
-
-      // Project portfolio
-      {
-        name: 'project',
-        title: 'Project',
-        type: 'document',
-        fields: [
-          {
-            name: 'title',
-            title: 'Title',
-            type: 'string'
-          },
-          {
-            name: 'slug',
-            title: 'Slug',
-            type: 'slug',
-            options: {
-              source: 'title'
-            }
-          },
-          {
-            name: 'description',
-            title: 'Description',
-            type: 'text'
-          },
-          {
-            name: 'images',
-            title: 'Images',
-            type: 'array',
-            of: [
-              {
-                type: 'image',
-                options: {
-                  hotspot: true
-                }
-              }
-            ]
-          },
-          {
-            name: 'year',
-            title: 'Year',
-            type: 'number'
-          }
-        ]
-      },
-
-      // Blog posts
-      {
-        name: 'blogPost',
-        title: 'Blog Post',
-        type: 'document',
-        fields: [
-          {
-            name: 'title',
-            title: 'Title',
-            type: 'string'
-          },
-          {
-            name: 'slug',
-            title: 'Slug',
-            type: 'slug',
-            options: {
-              source: 'title'
-            }
-          },
-          {
-            name: 'excerpt',
-            title: 'Excerpt',
-            type: 'text'
-          },
-          {
-            name: 'content',
-            title: 'Content',
-            type: 'array',
-            of: [
-              {type: 'block'},
-              {type: 'image'}
-            ]
-          },
-          {
-            name: 'author',
-            title: 'Author',
-            type: 'reference',
-            to: [{type: 'teamMember'}]
-          }
-        ]
-      },
-
-      // Settings
-      {
-        name: 'settings',
-        title: 'Settings',
-        type: 'document',
-        fields: [
-          {
-            name: 'siteTitle',
-            title: 'Site Title',
-            type: 'string'
-          },
-          {
-            name: 'siteDescription',
-            title: 'Site Description',
-            type: 'text'
           },
           {
             name: 'logo',
             title: 'Logo',
+            type: 'image' 
+          },
+          {
+            name: 'favicon',
+            title: 'Favicon',
             type: 'image'
           },
           {
-            name: 'socialLinks',
-            title: 'Social Links',
-            type: 'array',
-            of: [
-              {
-                type: 'object',
-                fields: [
-                  {
-                    name: 'platform',
-                    title: 'Platform',
-                    type: 'string'
-                  },
-                  {
-                    name: 'url',
-                    title: 'URL',
-                    type: 'url'
-                  }
-                ]
-              }
-            ]
-          },
-          {
             name: 'contactInfo',
-            title: 'Contact Information',
+            title: 'Contact Information', 
             type: 'object',
             fields: [
               {
-                name: 'address',
-                title: 'Address',
-                type: 'text'
+                name: 'email',
+                title: 'Email',
+                type: 'string'
               },
               {
-                name: 'phone',
+                name: 'phone', 
                 title: 'Phone Number',
                 type: 'string'
               },
               {
-                name: 'email',
-                title: 'Email Address',
-                type: 'string'
+                name: 'address',
+                title: 'Address',
+                type: 'text'  
               }
             ]
+          },
+          {
+            name: 'socialMedia',
+            title: 'Social Media Links', 
+            type: 'object',
+            fields: [
+              {
+                name: 'facebook',
+                title: 'Facebook URL', 
+                type: 'url'
+              },
+              {
+                name: 'instagram', 
+                title: 'Instagram URL',
+                type: 'url'  
+              },
+              {
+                name: 'linkedin',
+                title: 'LinkedIn URL',
+                type: 'url' 
+              }
+            ]
+          },
+          {
+            name: 'certificationLogos', 
+            title: 'Certification Logos',
+            type: 'array',
+            of: [{type: 'image'}]
           }
-        ]
+        ],
+        preview: {
+          select: {
+            title: 'name'
+          }
+        }
       }
+
     ]
   },
 
@@ -362,18 +420,15 @@ export default {
     title: "SteelForm Engineering CMS"
   },
 
-  // Authentication and API settings
-  token: process.env.SANITY_TOKEN || null,
-  
-  // Environment variables for different deployment stages
-  environments: {
-    development: {
-      projectId: "dev-project-id",
-      dataset: "development"
-    },
-    production: {
-      projectId: "pf2xnwzy", 
-      dataset: "production"
+  // Plugins and features 
+  plugins: [
+    // Add any required plugins here
+  ],
+
+  // Document actions (optional)
+  document: {
+    newDocumentOptions: (prev, { selection }) => {
+      return prev.filter(template => template.id !== 'homepage')
     }
   }
-};
+}
