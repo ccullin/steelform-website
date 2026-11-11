@@ -1,5 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import HeroSection from '../components/homepage/HeroSection';
+import ServicesSection from '../components/homepage/ServicesSection';
 
 export default function Home() {
   return (
@@ -14,7 +16,7 @@ export default function Home() {
       </Head>
 
       {/* Header */}
-      <header className="header">
+      <header className="header bg-white shadow">
         <div className="container mx-auto px-4 py-6 flex justify-between items-center">
           <Link href="/">
             <a>
@@ -39,36 +41,10 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="hero-section">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">SteelForm Engineering</h1>
-          <p className="text-xl mb-8">Mining & Earthmoving Equipment Manufacturers</p>
-          <p className="max-w-2xl mx-auto mb-8 text-lg">
-            Established in Melbourne 1999, Steelform Engineering has grown to become a medium sized, well equipped fabrication business in Melbourne.
-          </p>
-        </div>
-      </section>
+      <HeroSection />
 
       {/* Services Section */}
-      <section className="services-section">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Our Services</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="service-card bg-white p-6 shadow">
-              <h3 className="text-xl font-semibold mb-4">Custom Fabrication</h3>
-              <p>Specialized in creating custom steel structures and components for mining and earthmoving operations.</p>
-            </div>
-            <div className="service-card bg-white p-6 shadow">
-              <h3 className="text-xl font-semibold mb-4">Equipment Manufacturing</h3>
-              <p>Manufacturing specialized equipment designed to withstand harsh mining conditions.</p>
-            </div>
-            <div className="service-card bg-white p-6 shadow">
-              <h3 className="text-xl font-semibold mb-4">Maintenance & Repair</h3>
-              <p>Comprehensive maintenance services for existing mining and earthmoving equipment.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ServicesSection />
 
       {/* About Section */}
       <section className="py-16 bg-white">
@@ -86,7 +62,7 @@ export default function Home() {
               </p>
             </div>
             <div className="md:w-1/2">
-              <img src="/images/about-image.jpg" alt="About SteelForm Engineering" className="rounded-lg shadow" />
+              <img src="/images/about-image.jpg" alt="About SteelForm Engineering" className="rounded-lg shadow w-full" />
             </div>
           </div>
         </div>
@@ -107,7 +83,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="footer">
+      <footer className="footer bg-gray-800 text-white py-12">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-6 md:mb-0">
