@@ -7,14 +7,18 @@ export default function Home() {
       <Head>
         <title>SteelForm Engineering - Mining & Earthmoving Equipment Manufacturers</title>
         <meta name="description" content="Established in Melbourne 1999, Steelform Engineering has grown to become a medium sized, well equipped fabrication business in Melbourne." />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,500&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet" />
       </Head>
 
       {/* Header */}
-      <header className="bg-white shadow">
+      <header className="header">
         <div className="container mx-auto px-4 py-6 flex justify-between items-center">
           <Link href="/">
             <a>
-              <img src="/logo.png" alt="SteelForm Engineering Logo" className="h-12" />
+              <img src="/images/logo.png" alt="SteelForm Engineering Logo" className="h-12" />
             </a>
           </Link>
           <nav className="hidden md:block">
@@ -35,30 +39,30 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="bg-blue-900 text-white py-16">
+      <section className="hero-section">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">SteelForm Engineering</h1>
           <p className="text-xl mb-8">Mining & Earthmoving Equipment Manufacturers</p>
-          <p className="max-w-2xl mx-auto mb-8">
+          <p className="max-w-2xl mx-auto mb-8 text-lg">
             Established in Melbourne 1999, Steelform Engineering has grown to become a medium sized, well equipped fabrication business in Melbourne.
           </p>
         </div>
       </section>
 
       {/* Services Section */}
-      <section className="py-16 bg-white">
+      <section className="services-section">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">Our Services</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="border rounded-lg p-6 shadow">
+            <div className="service-card bg-white p-6 shadow">
               <h3 className="text-xl font-semibold mb-4">Custom Fabrication</h3>
               <p>Specialized in creating custom steel structures and components for mining and earthmoving operations.</p>
             </div>
-            <div className="border rounded-lg p-6 shadow">
+            <div className="service-card bg-white p-6 shadow">
               <h3 className="text-xl font-semibold mb-4">Equipment Manufacturing</h3>
               <p>Manufacturing specialized equipment designed to withstand harsh mining conditions.</p>
             </div>
-            <div className="border rounded-lg p-6 shadow">
+            <div className="service-card bg-white p-6 shadow">
               <h3 className="text-xl font-semibold mb-4">Maintenance & Repair</h3>
               <p>Comprehensive maintenance services for existing mining and earthmoving equipment.</p>
             </div>
@@ -67,7 +71,7 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section className="py-16 bg-gray-100">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center">
             <div className="md:w-1/2 mb-8 md:mb-0 md:pr-8">
@@ -82,18 +86,18 @@ export default function Home() {
               </p>
             </div>
             <div className="md:w-1/2">
-              <img src="/about-image.jpg" alt="About SteelForm Engineering" className="rounded-lg shadow" />
+              <img src="/images/about-image.jpg" alt="About SteelForm Engineering" className="rounded-lg shadow" />
             </div>
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-gray-100">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">Contact Us</h2>
           <div className="max-w-2xl mx-auto">
-            <div className="bg-gray-50 p-8 rounded-lg shadow">
+            <div className="bg-white p-8 rounded-lg shadow">
               <p className="mb-4"><strong>Address:</strong> Melbourne, Australia</p>
               <p className="mb-4"><strong>Phone:</strong> +61 3 XXXX XXXX</p>
               <p className="mb-4"><strong>Email:</strong> info@steelformengineering.com.au</p>
@@ -103,11 +107,11 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-800 text-white py-12">
+      <footer className="footer">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-6 md:mb-0">
-              <img src="/logo.png" alt="SteelForm Engineering Logo" className="h-8 mb-2" />
+              <img src="/images/logo.png" alt="SteelForm Engineering Logo" className="h-8 mb-2" />
               <p>© {new Date().getFullYear()} SteelForm Engineering. All rights reserved.</p>
             </div>
             <div className="flex space-x-4">

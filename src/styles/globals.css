@@ -94,3 +94,43 @@ nav li {
     font-size: 2rem;
   }
 }
+
+/* Header Styles */
+.header {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  color: white;
+  padding: 4rem 0;
+}
+
+.hero-content {
+  text-align: center;
+}
+
+/* Services Section */
+.services-section {
+  padding: 4rem 0;
+  background-color: #f8fafc;
+}
+
+.service-card {
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Footer */
+.footer {
+  background-color: #1e293b;
+  color: white;
+  padding: 3rem 0;
+}
