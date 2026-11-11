@@ -5,8 +5,8 @@ export default {
   name: 'steelform-cms',
   title: 'SteelForm Engineering CMS',
   
-  // Project ID (this would come from your actual Sanity dashboard)
-  projectId: 'YOUR_SANITY_PROJECT_ID', // Replace with your actual project ID
+  // Project ID (this comes from your Sanity dashboard)
+  projectId: process.env.SANITY_PROJECT_ID || 'YOUR_SANITY_PROJECT_ID',
   
   // Dataset configuration
   dataset: 'production',
