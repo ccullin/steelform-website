@@ -175,22 +175,22 @@ export async function getStaticProps() {
     let homeData = {};
     
     // Only attempt to fetch if we have the required environment variables (production context)
-    if (process.env.NEXT_PUBLIC_SANITY_PROJECT_ID && process.env.SANITY_API_TOKEN) {
+    // if (process.env.NEXT_PUBLIC_SANITY_PROJECT_ID && process.env.SANITY_API_TOKEN) {
       const { client } = require('../lib/sanity');
       
       // Check that client exists before trying to use it
-      if (client && typeof client.fetch === 'function') {
-        // Fetch data from Sanity CMS
-        homeData = await client.fetch(`*[_type == "homePage"][0]{
-          title,
-          heroBanner,
-          aboutSection,
-          productsSection,
-          contactSection,
-          seo
-        }`);
-      }
+    if (client && typeof client.fetch === 'function') {
+      // Fetch data from Sanity CMS
+      homeData = await client.fetch(`*[_type == "homePage"][0]{
+        title,
+        heroBanner,
+        aboutSection,
+        productsSection,
+        contactSection,
+        seo
+      }`);
     }
+    // }
     
     return {
       props: {

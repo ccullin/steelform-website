@@ -2,11 +2,11 @@
 
 export default {
   // Project information
-  name: 'steelform-cms',
+  name: 'steelform',
   title: 'SteelForm Engineering CMS',
   
   // Project ID (this comes from your Sanity dashboard)
-  projectId: process.env.SANITY_PROJECT_ID || 'YOUR_SANITY_PROJECT_ID',
+  projectId: 'pf2xnwzy',
   
   // Dataset configuration
   dataset: 'production',
@@ -416,7 +416,7 @@ export default {
 
   // Studio configuration
   studio: {
-    name: "steelform-cms",
+    name: "steelform",
     title: "SteelForm Engineering CMS"
   },
 

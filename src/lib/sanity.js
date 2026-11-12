@@ -7,7 +7,7 @@ export const client = createClient({
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
   apiVersion: '2021-03-25',
   useCdn: false, // Set to true for production
-  token: process.env.SANITY_API_TOKEN
+  token: 'skwOAlmkAxIt0jmB29M3GFTstIP3H8b3LGQvF9fkD5GwcDFQc5fh5ZieJ6VE0jNPZ4wG80tNjajJWpp5TZue86Rlysyo0TTXvYSTpUNtGmtSfeVeIgPUMRVLwh4XZxgb4x2s7BAk1nWRgQd8Yz0yYri2s6PmcRBcLn8tguHVLUvOBjLmrCzH'
 })
 
 // Helper function to fetch homepage data
