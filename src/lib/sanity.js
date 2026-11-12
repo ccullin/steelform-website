@@ -3,10 +3,11 @@
 import { createClient } from '@sanity/client'
 
 export const client = createClient({
-  projectId: process.env.SANITY_PROJECT_ID,
-  dataset: 'production',
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'pf2xnwzy',
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
   apiVersion: '2021-03-25',
   useCdn: false, // Set to true for production
+  token: process.env.SANITY_API_TOKEN
 })
 
 // Helper function to fetch homepage data
