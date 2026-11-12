@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import { client } from '../lib/sanity';
 
 export default function Home({ homeData }) {
   // If we don't have data, show placeholder content (for development)
@@ -171,22 +172,24 @@ export default function Home({ homeData }) {
 // This function gets called at build time
 export async function getStaticProps() {
   try {
-    // Only fetch data if environment variables are available (production context)
     let homeData = {};
     
-    // Check if we're in a production-like environment with proper setup
+    // Only attempt to fetch if we have the required environment variables (production context)
     if (process.env.NEXT_PUBLIC_SANITY_PROJECT_ID && process.env.SANITY_API_TOKEN) {
       const { client } = require('../lib/sanity');
       
-      // Fetch data from Sanity CMS
-      homeData = await client.fetch(`*[_type == "homePage"][0]{
-        title,
-        heroBanner,
-        aboutSection,
-        productsSection,
-        contactSection,
-        seo
-      }`);
+      // Check that client exists before trying to use it
+      if (client && typeof client.fetch === 'function') {
+        // Fetch data from Sanity CMS
+        homeData = await client.fetch(`*[_type == "homePage"][0]{
+          title,
+          heroBanner,
+          aboutSection,
+          productsSection,
+          contactSection,
+          seo
+        }`);
+      }
     }
     
     return {
@@ -197,7 +200,7 @@ export async function getStaticProps() {
     };
   } catch (error) {
     console.error('Error fetching data:', error);
-    // Return empty object in case of error
+    // Return empty object in case of error to prevent build failure
     return {
       props: {
         homeData: {}
