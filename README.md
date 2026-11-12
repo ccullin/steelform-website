@@ -151,4 +151,4 @@ All documentation is ready for immediate use when accounts are created in each s
 
 ## License
 
-MIT License - see LICENSE file for details.
+MIT License - see LICENSE file for details..
