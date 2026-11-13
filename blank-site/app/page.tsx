@@ -17,8 +17,7 @@ export default async function HomePage() {
       </nav>
 
       <h1 className="text-3xl font-bold mb-4">
-        {/* {homeData?.title || 'Welcome to the Placeholder Site'} */}
-        {homeData?.title}
+        {homeData?.title || 'Default H1 heading for Placeholder Site'}
       </h1>
       <p className="text-gray-700">
         {homeData?.content || 'Publish a "home" page in Sanity Studio to replace this text.'}
