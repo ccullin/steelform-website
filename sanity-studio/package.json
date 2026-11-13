@@ -1,7 +1,0 @@
-{
-  "name": "sanity-studio",
-  "version": "1.0.0",
-  "dependencies": {
-    "sanity": "^6.1.0"
-  }
-}
