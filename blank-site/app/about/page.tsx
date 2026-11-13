@@ -1,10 +1,13 @@
 import Link from 'next/link'
 import { client } from '@/sanity/lib/client'
 
+async function getAboutData() {
+  'use cache'
+  return client.fetch(`*[_type == "page" && slug.current == "about"][0]`)
+}
+
 export default async function AboutPage() {
-  const aboutData = await client.fetch(
-    `*[_type == "page" && slug.current == "about"][0]`
-  )
+  const aboutData = await getAboutData()
 
   return (
     <main className="p-8 max-w-2xl mx-auto">

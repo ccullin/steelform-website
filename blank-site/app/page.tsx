@@ -1,11 +1,13 @@
 import Link from 'next/link'
 import { client } from '@/sanity/lib/client'
 
+async function getHomeData() {
+  'use cache'
+  return client.fetch(`*[_type == "page" && slug.current == "home"][0]`)
+}
+
 export default async function HomePage() {
-  // Fetches the first document with slug "home"
-  const homeData = await client.fetch(
-    `*[_type == "page" && slug.current == "home"][0]`
-  )
+  const homeData = await getHomeData()
 
   return (
     <main className="p-8 max-w-2xl mx-auto">
