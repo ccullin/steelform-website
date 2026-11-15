@@ -1,5 +1,5 @@
 import { type SchemaTypeDefinition } from 'sanity'
-import { pageType } from './pageType'
+import { generalPage } from './generalPage'
 import { seo } from './seo'
 import { imageWithAlt } from './imageWithAlt'
 import { solution } from './solution'
@@ -11,7 +11,7 @@ import { globalSettings } from './globalSettings'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
-    pageType,
+    generalPage,
     seo,
     imageWithAlt,
     solution,

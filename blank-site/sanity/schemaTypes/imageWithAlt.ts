@@ -6,8 +6,8 @@ export const imageWithAlt = defineType({
   type: 'object',
   fields: [
     defineField({
-      name: 'asset',
-      title: 'Asset',
+      name: 'image',
+      title: 'Image',
       type: 'image',
       validation: (rule) => rule.required(),
     }),
@@ -15,12 +15,6 @@ export const imageWithAlt = defineType({
       name: 'alt',
       title: 'Alternative Text',
       type: 'string',
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
-      name: 'caption',
-      title: 'Caption',
-      type: 'text',
     }),
   ],
 })

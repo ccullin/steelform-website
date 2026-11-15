@@ -1,8 +1,8 @@
 import { defineField, defineType } from 'sanity'
 
-export const pageType = defineType({
+export const generalPage = defineType({
   name: 'page',
-  title: 'Page',
+  title: 'General Page',
   type: 'document',
   fields: [
     defineField({
@@ -17,6 +17,18 @@ export const pageType = defineType({
       type: 'slug',
       options: { source: 'title' },
       validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'heroImage',
+      title: 'Hero Image',
+      type: 'imageWithAlt',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'summary',
+      title: 'Summary',
+      type: 'text',
+      rows: 3,
     }),
     defineField({
       name: 'content',

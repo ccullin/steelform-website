@@ -21,8 +21,7 @@ export const solution = defineType({
     defineField({
       name: 'seo',
       title: 'SEO Metadata',
-      type: 'reference',
-      to: [{ type: 'seo' }],
+      type: 'seo',
       validation: (rule) => rule.required(),
     }),
     defineField({

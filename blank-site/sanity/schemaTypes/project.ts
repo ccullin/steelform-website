@@ -19,13 +19,6 @@ export const project = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'seo',
-      title: 'SEO Metadata',
-      type: 'reference',
-      to: [{ type: 'seo' }],
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
       name: 'heroImage',
       title: 'Hero Image',
       type: 'imageWithAlt',
@@ -41,18 +34,6 @@ export const project = defineType({
       name: 'summary',
       title: 'Summary',
       type: 'text',
-    }),
-    defineField({
-      name: 'mainContent',
-      title: 'Main Content',
-      type: 'array',
-      of: [
-        { type: 'block' },
-        {
-          type: 'image',
-          options: { hotspot: true },
-        },
-      ],
     }),
     defineField({
       name: 'industries',

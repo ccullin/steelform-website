@@ -21,8 +21,7 @@ export const article = defineType({
     defineField({
       name: 'seo',
       title: 'SEO Metadata',
-      type: 'reference',
-      to: [{ type: 'seo' }],
+      type: 'seo',
       validation: (rule) => rule.required(),
     }),
     defineField({
@@ -30,11 +29,6 @@ export const article = defineType({
       title: 'Hero Image',
       type: 'imageWithAlt',
       validation: (rule) => rule.required(),
-    }),
-    defineField({
-      name: 'summary',
-      title: 'Summary',
-      type: 'text',
     }),
     defineField({
       name: 'mainContent',
@@ -47,12 +41,6 @@ export const article = defineType({
           options: { hotspot: true },
         },
       ],
-    }),
-    defineField({
-      name: 'publishedDate',
-      title: 'Published Date',
-      type: 'datetime',
-      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'industries',

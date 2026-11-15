@@ -8,32 +8,21 @@ export const seo = defineType({
     defineField({
       name: 'title',
       title: 'Meta Title',
+      description: 'Recommended 50-60 characters. If left blank, the page title will be used.',
       type: 'string',
-      validation: (rule) => rule.required(),
+      validation: (Rule) =>
+        Rule.max(60).warning('SEO titles should ideally be under 60 characters'),
     }),
     defineField({
       name: 'description',
       title: 'Meta Description',
+      description: 'Recommended 120-160 characters. If left blank, the summary will be used.',
       type: 'text',
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
-      name: 'openGraphTitle',
-      title: 'Open Graph Title',
-      type: 'string',
-    }),
-    defineField({
-      name: 'openGraphDescription',
-      title: 'Open Graph Description',
-      type: 'text',
-    }),
-    defineField({
-      name: 'openGraphImage',
-      title: 'Open Graph Image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
+      rows: 3,
+      validation: (Rule) =>
+        Rule.max(160).warning(
+          'SEO descriptions should ideally be under 160 characters'
+        ),
     }),
   ],
 })
