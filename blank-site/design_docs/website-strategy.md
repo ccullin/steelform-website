@@ -154,7 +154,11 @@ Customer searches for a problem.
 
 ↓
 
-Solution Page
+Solution Page (parent level, e.g. Excavator Buckets)
+
+↓
+
+Solutions Page (child level, e.g. Mud Buckets))
 
 ↓
 

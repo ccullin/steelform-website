@@ -36,6 +36,13 @@ export const project = defineType({
       type: 'text',
     }),
     defineField({
+      name: 'solutions',
+      title: 'Solutions',
+      type: 'array',
+      of: [{ type: 'reference', to: { type: 'solution' } }],
+      validation: (Rule) => Rule.required().min(1)
+    }),
+    defineField({
       name: 'industries',
       title: 'Industries',
       type: 'array',

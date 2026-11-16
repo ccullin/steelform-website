@@ -43,6 +43,12 @@ export const article = defineType({
       ],
     }),
     defineField({
+      name: 'solutions',
+      title: 'Solutions',
+      type: 'array',
+      of: [{ type: 'reference', to: { type: 'solution' } }],
+    }),
+    defineField({
       name: 'industries',
       title: 'Industries',
       type: 'array',

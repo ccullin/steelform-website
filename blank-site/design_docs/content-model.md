@@ -11,7 +11,6 @@ Pages are generated from relationships between content.
 # Solution
 
 ## Purpose
-
 Primary SEO and conversion content.
 
 Examples:
@@ -22,7 +21,6 @@ Examples:
 - Mining Equipment
 
 ## Fields
-
 - Title
 - Slug
 - SEO Title
@@ -32,19 +30,17 @@ Examples:
 - Main Content
 
 ## Relationships
-
+- none
 
 ---
 
 # Project
 
 ## Purpose
-
 Demonstrate capability.
 Provide proof of experience.
 
 ## Fields
-
 - Title
 - Slug
 - Hero Image
@@ -52,7 +48,7 @@ Provide proof of experience.
 - Summary
 
 ## Relationships
-
+- Solutions[]
 - Industries[]
 - EquipmentTypes[]
 
@@ -61,12 +57,10 @@ Provide proof of experience.
 # Article
 
 ## Purpose
-
 Capture informational searches.
 Build topical authority.
 
 ## Fields
-
 - Title
 - Slug
 - SEO Title
@@ -75,7 +69,7 @@ Build topical authority.
 - Main Content
 
 ## Relationships
-
+- Solutions[]
 - Industries[]
 - EquipmentTypes[]
 
@@ -84,25 +78,23 @@ Build topical authority.
 # Industry
 
 ## Purpose
-
 Provide industry-specific context.
 
 Improve internal linking.
 
 ## Fields
-
 - Title
 - Slug
 - Summary
 
 ## Relationships
+- none
 
 ---
 
 # Equipment Type
 
 ## Purpose
-
 Capture equipment-specific searches.
 
 Examples:
@@ -112,19 +104,18 @@ Examples:
 - Komatsu PC450
 
 ## Fields
-
 - Title
 - Slug
 - Hero Image
 
 ## Relationships
+- none
 
 ---
 
 # Global Settings
 
 ## Fields
-
 - Business Name
 - Phone Number
 - Email Address
@@ -140,23 +131,35 @@ Examples:
 
 ---
 
-# Key Relationships
-
-Solution
-<- Industries
-
-Solution
-<- Equipment Types
-
+# Relationship Ownership
 Project
+-> Solutions
 -> Industries
-
-Project
 -> Equipment Types
 
 Article
+-> Solutions
 -> Industries
-
-Article
 -> Equipment Types
 
+---
+
+# Content Discovery
+
+## Solution Pages Discover:
+- Related Projects
+- Related Articles
+
+via GROQ queries.
+
+## Industry Pages Discover:
+- Related Projects
+- Related Articles
+
+via GROQ queries.
+
+### Equipment Pages Discover:
+- Related Projects
+- Related Articles
+
+via GROQ queries.

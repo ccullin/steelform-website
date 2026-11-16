@@ -45,13 +45,28 @@ Home Page
 
 ---
 
-/solutions/[slug]
+/solutions/[parentSlug]
+/solutions/[parentSlug]/[childSlug]
+
+Note:
+Route parameters are derived from Solution slug fields.
+
+Parent Solution:
+slug.current
+
+Child Solution:
+parent.slug.current + slug.current
 
 Examples:
-
+parent urls
 - /solutions/excavator-buckets
-- /solutions/bucket-repairs
+- /solutions/excavator-attachements
 - /solutions/heavy-fabrication
+
+child urls
+- /solutions/excavator-buckets/mud-buckets
+- /solutions/excavator-attachements/rippers
+- /solutions/heavy-fabrication/screeners
 
 Template:
 
@@ -151,7 +166,8 @@ Sections
 
 Used By
 
-- Solution
+- Solution parent
+- Solution child
 - Industry
 - Equipment Type
 - Why Steelform
@@ -178,8 +194,7 @@ Sections
 1. Hero
 2. Project Overview
 3. Gallery
-4. Related Content
-5. CTA
+4. CTA
 
 ---
 
@@ -267,9 +282,35 @@ Fields
 
 # Development Principles
 
-1. Content first.
+1. Content and Mobile first.
 2. Relationships over page hierarchy.
 3. Reusable components.
 4. Minimal templates.
 5. Search intent driven.
 6. Every page should support a quote request.
+
+---
+
+## Data Requirements
+
+### Solution Page
+
+Requires:
+- Solution
+- Child Solutions
+- Related Projects
+- Related Articles
+
+### Industries Page
+
+Requires:
+- Industry
+- Related Projects
+- Related Articles
+
+### Equipment Page
+
+Requires:
+- Equipment Type
+- Related Projects
+- Related Articles
