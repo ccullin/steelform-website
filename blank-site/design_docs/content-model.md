@@ -33,10 +33,6 @@ Examples:
 
 ## Relationships
 
-- Projects[]
-- Articles[]
-- Industries[]
-- EquipmentTypes[]
 
 ---
 
@@ -45,23 +41,18 @@ Examples:
 ## Purpose
 
 Demonstrate capability.
-
 Provide proof of experience.
 
 ## Fields
 
 - Title
 - Slug
-- SEO Title
-- SEO Description
 - Hero Image
 - Gallery[]
 - Summary
-- Main Content
 
 ## Relationships
 
-- Solutions[]
 - Industries[]
 - EquipmentTypes[]
 
@@ -72,7 +63,6 @@ Provide proof of experience.
 ## Purpose
 
 Capture informational searches.
-
 Build topical authority.
 
 ## Fields
@@ -82,13 +72,10 @@ Build topical authority.
 - SEO Title
 - SEO Description
 - Hero Image
-- Summary
 - Main Content
-- Published Date
 
 ## Relationships
 
-- Solutions[]
 - Industries[]
 - EquipmentTypes[]
 
@@ -106,16 +93,9 @@ Improve internal linking.
 
 - Title
 - Slug
-- SEO Title
-- SEO Description
-- Hero Image
 - Summary
-- Main Content
 
 ## Relationships
-
-- Solutions[]
-- Projects[]
 
 ---
 
@@ -135,43 +115,9 @@ Examples:
 
 - Title
 - Slug
-- SEO Title
-- SEO Description
 - Hero Image
-- Summary
-- Main Content
 
 ## Relationships
-
-- Solutions[]
-- Projects[]
-
----
-
-# Taxonomy Tag
-
-## Purpose
-
-Flexible classification.
-
-Examples:
-
-- Hardox
-- Wear Package
-- Mud Bucket
-- Rock Bucket
-- Mining
-
-## Fields
-
-- Title
-- Slug
-
-## Relationships
-
-- Solutions[]
-- Projects[]
-- Articles[]
 
 ---
 
@@ -182,37 +128,35 @@ Examples:
 - Business Name
 - Phone Number
 - Email Address
+- Address
+- Australian Business Number (ABN)
 - Social Links
 - Primary CTA Label
 - Secondary CTA Label
+- logo Light
+- Logo Dark
+- Favicon Light
+- Favicon Dark
 
 ---
 
 # Key Relationships
 
 Solution
-↔ Projects
+<- Industries
 
 Solution
-↔ Articles
-
-Solution
-↔ Industries
-
-Solution
-↔ Equipment Types
+<- Equipment Types
 
 Project
-↔ Industries
+-> Industries
 
 Project
-↔ Equipment Types
+-> Equipment Types
 
 Article
-↔ Solutions
+-> Industries
 
-Industry
-↔ Projects
+Article
+-> Equipment Types
 
-Industry
-↔ Solutions

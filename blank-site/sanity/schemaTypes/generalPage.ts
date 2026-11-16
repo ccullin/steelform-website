@@ -22,7 +22,6 @@ export const generalPage = defineType({
       name: 'heroImage',
       title: 'Hero Image',
       type: 'imageWithAlt',
-      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'summary',

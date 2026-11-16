@@ -6,8 +6,8 @@ export const equipmentType = defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'name',
-      title: 'Name',
+      name: 'title',
+      title: 'Title',
       type: 'string',
       validation: (rule) => rule.required(),
     }),
@@ -19,8 +19,8 @@ export const equipmentType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'image',
-      title: 'Image',
+      name: 'heroImage',
+      title: 'Hero Image',
       type: 'imageWithAlt',
       validation: (rule) => rule.required(),
     }),
