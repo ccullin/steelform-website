@@ -1,4 +1,4 @@
-export interface Solution {
+export interface SolutionType {
   _id: string;
   title: string;
   solutionType: 'parent' | 'child';

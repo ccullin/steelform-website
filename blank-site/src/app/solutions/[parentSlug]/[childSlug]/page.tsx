@@ -1,5 +1,5 @@
-import { getChildSolutionWithParent, getRelatedProjectsBySolutionId, getRelatedArticlesBySolutionId } from '@/lib/sanity/queries/solutions'
-import { getGlobalSettings } from '@/lib/sanity/queries/globalSettings'
+import { getChildSolutionWithParent, getRelatedProjectsBySolutionId, getRelatedArticlesBySolutionId } from '@/lib/sanity/queries/solutionsQuery'
+import { getGlobalSettings } from '@/lib/sanity/queries/globalSettingsQuery'
 
 import { notFound } from 'next/navigation'
 import Image from 'next/image'

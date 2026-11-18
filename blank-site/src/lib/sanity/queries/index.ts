@@ -1,17 +1,17 @@
-export { getSolutionBySlug } from './solutions'
-export { getParentSolutionBySlug } from './solutions'
-export { getChildSolutions } from './solutions'
+export { getSolutionBySlug } from './solutionsQuery'
+export { getParentSolutionBySlug } from './solutionsQuery'
+export { getChildSolutions } from './solutionsQuery'
 
-export { getProjectBySlug } from './projects'
+export { getProjectBySlug } from './projectsQuery'
 
-export { getArticleBySlug } from './articles'
+export { getArticleBySlug } from './articlesQuery'
 
-export { getIndustryBySlug } from './industries'
-export { getProjectsByIndustry } from './industries'
-export { getArticlesByIndustry } from './industries'
+export { getIndustryBySlug } from './industriesQuery'
+export { getProjectsByIndustry } from './industriesQuery'
+export { getArticlesByIndustry } from './industriesQuery'
 
-export { getEquipmentTypeBySlug } from './equipmentTypes'
-export { getProjectsByEquipmentType } from './equipmentTypes'
-export { getArticlesByEquipmentType } from './equipmentTypes'
+export { getEquipmentTypeBySlug } from './equipmentTypesQuery'
+export { getProjectsByEquipmentType } from './equipmentTypesQuery'
+export { getArticlesByEquipmentType } from './equipmentTypesQuery'
 
-export { getGlobalSettings } from './globalSettings'
+export { getGlobalSettings } from './globalSettingsQuery'

@@ -1,8 +1,8 @@
 import { defineField, defineType } from 'sanity'
 
-export const project = defineType({
-  name: 'project',
-  title: 'Project',
+export const articleSchema = defineType({
+  name: 'article',
+  title: 'Article',
   type: 'document',
   fields: [
     defineField({
@@ -19,28 +19,34 @@ export const project = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'seo',
+      title: 'SEO Metadata',
+      type: 'seo',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: 'heroImage',
       title: 'Hero Image',
       type: 'imageWithAlt',
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'gallery',
-      title: 'Gallery',
+      name: 'mainContent',
+      title: 'Main Content',
       type: 'array',
-      of: [{ type: 'imageWithAlt' }],
-    }),
-    defineField({
-      name: 'summary',
-      title: 'Summary',
-      type: 'text',
+      of: [
+        { type: 'block' },
+        {
+          type: 'image',
+          options: { hotspot: true },
+        },
+      ],
     }),
     defineField({
       name: 'solutions',
       title: 'Solutions',
       type: 'array',
       of: [{ type: 'reference', to: { type: 'solution' } }],
-      validation: (Rule) => Rule.required().min(1)
     }),
     defineField({
       name: 'industries',

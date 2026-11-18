@@ -1,8 +1,8 @@
 import { defineField, defineType } from 'sanity'
 
-export const industry = defineType({
-  name: 'industry',
-  title: 'Industry',
+export const generalPageSchema = defineType({
+  name: 'page',
+  title: 'General Page',
   type: 'document',
   fields: [
     defineField({
@@ -19,8 +19,19 @@ export const industry = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'heroImage',
+      title: 'Hero Image',
+      type: 'imageWithAlt',
+    }),
+    defineField({
       name: 'summary',
       title: 'Summary',
+      type: 'text',
+      rows: 3,
+    }),
+    defineField({
+      name: 'content',
+      title: 'Content',
       type: 'text',
     }),
   ],

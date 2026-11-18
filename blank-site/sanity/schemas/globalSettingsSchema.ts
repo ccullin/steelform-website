@@ -1,6 +1,6 @@
 import { defineField, defineType } from 'sanity'
 
-export const globalSettings = defineType({
+export const globalSettingsSchema = defineType({
   name: 'globalSettings',
   title: 'Global Settings',
   type: 'document',
