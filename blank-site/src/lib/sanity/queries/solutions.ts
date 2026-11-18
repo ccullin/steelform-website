@@ -72,3 +72,31 @@ export const getChildSolutionWithParent = async (parentSlug: string, childSlug: 
 
   return client.fetch(query, { childSlug })
 }
+
+export const getRelatedProjectsBySolutionId = async (solutionId: string) => {
+  const query = `
+    *[_type == 'project' && references($solutionId)]{
+      _id,
+      title,
+      slug,
+      heroImage,
+      summary
+    }
+  `
+
+  return client.fetch(query, { solutionId })
+}
+
+export const getRelatedArticlesBySolutionId = async (solutionId: string) => {
+  const query = `
+    *[_type == 'article' && references($solutionId)]{
+      _id,
+      title,
+      slug,
+      heroImage,
+      summary
+    }
+  `
+
+  return client.fetch(query, { solutionId })
+}

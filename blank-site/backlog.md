@@ -1,0 +1,1 @@
+Replace temporary mainContent renderer with PortableText renderer.
