@@ -19,6 +19,13 @@ export const projectSchema = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'publishDate',
+      title: 'Publish Date',
+      type: 'datetime',
+      initialValue: () => new Date().toISOString(),
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: 'heroImage',
       title: 'Hero Image',
       type: 'imageWithAlt',

@@ -1,6 +1,7 @@
 import { client } from '../client'
 
 export const getArticleBySlug = async (slug: string) => {
+  'use cache'
   const query = `
     *[_type == 'article' && slug.current == $slug][0]{
       _id,
@@ -16,4 +17,15 @@ export const getArticleBySlug = async (slug: string) => {
   `
 
   return client.fetch(query, { slug })
+}
+
+export const getArticleSlugs = async () => {
+  'use cache'
+  const query = `
+    *[_type == 'article' && defined(slug.current)]{
+      "slug": slug.current
+    }
+  `
+
+  return client.fetch(query)
 }
