@@ -22,7 +22,7 @@ export default async function ArticlesLandingPage() {
           {articles.map((article: Types.ArticleType) => (
             <Link 
               key={article._id} 
-              href={`/articles/${article.slug}`}
+              href={`/articles/${article.slug.current}`}
               className="block group"
             >
               <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">

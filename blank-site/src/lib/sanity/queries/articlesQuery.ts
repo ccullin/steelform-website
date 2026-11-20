@@ -1,5 +1,4 @@
 import { client } from '../client'
-import * as Types from '../types/types'
 
 export const getArticleBySlug = async (slug: string) => {
   'use cache'
