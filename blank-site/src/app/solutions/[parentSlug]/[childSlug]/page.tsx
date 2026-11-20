@@ -1,11 +1,21 @@
-import { getChildSolutionWithParent, getRelatedProjectsBySolutionId, getRelatedArticlesBySolutionId } from '@/lib/sanity/queries/solutionsQuery'
-import { getGlobalSettings } from '@/lib/sanity/queries/globalSettingsQuery'
+import { getChildSolutionWithParent, getRelatedProjectsBySolutionId, getRelatedArticlesBySolutionId, getAllChildSolutionsWithParent } from '@/lib/sanity/queries/solutionsQuery'
 
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import { urlFor } from '@/lib/sanity/image'
 import Link from 'next/link'
+import * as Types from '@/lib/sanity/types/types'
 
+export async function generateStaticParams() {
+  // Fetch all child solutions with their parent information
+  const childSolutions = await getAllChildSolutionsWithParent()
+  
+  // Return array of param objects for each combination
+  return childSolutions.map((child: Types.ChildSlugType) => ({
+    parentSlug: child.parent.slug.current,
+    childSlug: child.slug.current,
+  }))
+}
 
 export default async function ChildSolutionPage({
   params,
@@ -16,15 +26,9 @@ export default async function ChildSolutionPage({
   }>
 }) {
   const { parentSlug, childSlug } = await params
-  
-  // temporty debug:
-  console.log({parentSlug, childSlug})
 
   // Fetch the child solution with its parent
   const childSolution = await getChildSolutionWithParent(parentSlug, childSlug)
-
-  // temporty debug:
-  // console.log(JSON.stringify(childSolution, null, 2))
   
   // If no solution found, return a 404
   if (!childSolution) {
@@ -71,7 +75,7 @@ export default async function ChildSolutionPage({
       
       {childSolution.mainContent && (
         <div className="prose max-w-none">
-          {childSolution.mainContent.map((block) => (
+          {childSolution.mainContent.map((block: Types.PortableTextBlockType) => (
             <div key={block._key}>
               {block._type === 'block' && block.children?.map((child) => (
                 <p key={child.text}>{child.text}</p>
@@ -97,7 +101,7 @@ export default async function ChildSolutionPage({
         <section className="mt-12 mb-12">
           <h2 className="text-2xl font-bold mb-6">Related Projects</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {relatedProjects.map((project) => (
+            {relatedProjects.map((project: Types.ProjectType) => (
               <Link 
                 key={project._id} 
                 href={`/projects/${project.slug.current}`}
@@ -129,7 +133,7 @@ export default async function ChildSolutionPage({
         <section className="mt-12 mb-12">
           <h2 className="text-2xl font-bold mb-6">Related Articles</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {relatedArticles.map((article) => (
+            {relatedArticles.map((article: Types.ArticleType) => (
               <Link 
                 key={article._id} 
                 href={`/articles/${article.slug.current}`}

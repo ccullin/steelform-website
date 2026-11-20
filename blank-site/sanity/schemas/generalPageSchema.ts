@@ -23,6 +23,12 @@ export const generalPageSchema = defineType({
       title: 'Hero Image',
       type: 'imageWithAlt',
     }),
+        defineField({
+      name: 'seo',
+      title: 'SEO Metadata',
+      type: 'seo',
+      validation: (rule) => rule.required(),
+    }),
     defineField({
       name: 'summary',
       title: 'Summary',
@@ -30,9 +36,16 @@ export const generalPageSchema = defineType({
       rows: 3,
     }),
     defineField({
-      name: 'content',
-      title: 'Content',
-      type: 'text',
+      name: 'mainContent',
+      title: 'Main Content',
+      type: 'array',
+      of: [
+        { type: 'block' },
+        {
+          type: 'image',
+          options: { hotspot: true },
+        },
+      ],
     }),
   ],
 })

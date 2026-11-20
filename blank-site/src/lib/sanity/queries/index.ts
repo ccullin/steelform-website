@@ -15,3 +15,5 @@ export { getProjectsByEquipmentType } from './equipmentTypesQuery'
 export { getArticlesByEquipmentType } from './equipmentTypesQuery'
 
 export { getGlobalSettings } from './globalSettingsQuery'
+
+export { getPageBySlug } from './pagesQuery'

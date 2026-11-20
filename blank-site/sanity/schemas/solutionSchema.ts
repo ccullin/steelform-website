@@ -34,7 +34,11 @@ export const solutionSchema = defineType({
 
       validation: (Rule) =>
         Rule.custom((value, context) => {
-          const solutionType = (context.document as any)?.solutionType
+          const solutionType = (
+            context.document as {
+              solutionType?: 'parent' | 'child'
+            }
+          )?.solutionType
 
           if (solutionType === 'child' && !value) {
             return 'Child solutions must have a parent solution'

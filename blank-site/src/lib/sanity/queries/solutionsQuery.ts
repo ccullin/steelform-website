@@ -23,6 +23,7 @@ export const getSolutionBySlug = async (slug: string) => {
 }
 
 export const getParentSolutionBySlug = async (slug: string) => {
+  'use cache'
   const query = `
     *[_type == 'solution' && solutionType == 'parent' && slug.current == $slug][0]{
       _id,
@@ -39,6 +40,7 @@ export const getParentSolutionBySlug = async (slug: string) => {
 }
 
 export const getChildSolutions = async (parentId: string) => {
+  'use cache'
   const query = `
     *[_type == 'solution' && solutionType == 'child' && references($parentId)]{
       _id,
@@ -52,6 +54,7 @@ export const getChildSolutions = async (parentId: string) => {
 }
 
 export const getChildSolutionWithParent = async (parentSlug: string, childSlug: string) => {
+  'use cache'
   const query = `
     *[_type == 'solution' && solutionType == 'child' && slug.current == $childSlug][0]{
       _id,
@@ -73,7 +76,43 @@ export const getChildSolutionWithParent = async (parentSlug: string, childSlug: 
   return client.fetch(query, { childSlug })
 }
 
+// New function for fetching just parent slugs (needed for generateStaticParams)
+export const getParentSolutionSlugs = async () => {
+  const query = `
+    *[_type == 'solution' && solutionType == 'parent']{
+      slug
+    }
+  `
+
+  return client.fetch(query)
+}
+
+// Function to get all child solutions with parent info for static params generation
+export const getAllChildSolutionsWithParent = async () => {
+  'use cache'
+  const query = `
+    *[_type == 'solution' && solutionType == 'child']{
+      _id,
+      title,
+      solutionType,
+      parent->{
+        _id,
+        title,
+        slug
+      },
+      slug,
+      seo,
+      heroImage,
+      summary,
+      mainContent
+    }
+  `
+
+  return client.fetch(query)
+}
+
 export const getRelatedProjectsBySolutionId = async (solutionId: string) => {
+  'use cache'
   const query = `
     *[_type == 'project' && references($solutionId)]{
       _id,
@@ -88,6 +127,7 @@ export const getRelatedProjectsBySolutionId = async (solutionId: string) => {
 }
 
 export const getRelatedArticlesBySolutionId = async (solutionId: string) => {
+  'use cache'
   const query = `
     *[_type == 'article' && references($solutionId)]{
       _id,

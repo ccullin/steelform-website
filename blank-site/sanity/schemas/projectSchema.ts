@@ -39,8 +39,19 @@ export const projectSchema = defineType({
       name: 'solutions',
       title: 'Solutions',
       type: 'array',
-      of: [{ type: 'reference', to: { type: 'solution' } }],
-      validation: (Rule) => Rule.required().min(1)
+      of: [
+        {
+          type: 'reference',
+          to: [{ type: 'solution' }],
+          options: {
+            filter: 'solutionType == $solutionType',
+            filterParams: {
+              solutionType: 'child',
+            },
+          },
+        },
+      ],
+      validation: (Rule) => Rule.required().min(1),
     }),
     defineField({
       name: 'industries',
