@@ -38,6 +38,10 @@ export interface ProjectType {
   slug: SlugType
   summary?: string
   heroImage?: HeroImageType
+  gallery?: HeroImageType[]
+  solutions?: SolutionType[]
+  industries?: IndustryType[]
+  equipmentTypes?: EquipmentType[]
 }
 
 export interface ArticleType {
@@ -74,6 +78,18 @@ export interface ChildSolutionType {
   title: string
   slug: SlugType
   summary?: string
+}
+
+export interface IndustryType {
+  _id: string
+  title: string
+  slug: SlugType
+}
+
+export interface EquipmentType {
+  _id: string
+  title: string
+  slug: SlugType
 }
 
 export interface HeroImageType {

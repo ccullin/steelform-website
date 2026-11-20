@@ -8,3 +8,8 @@ Check styling
   Current-page styling
   CTA styling
   Card styling
+
+Pages
+  Equipment
+  Industries
+  

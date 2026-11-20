@@ -3,6 +3,7 @@ export { getSolutionBySlug } from './solutionsQuery'
 export { getParentSolutionBySlug } from './solutionsQuery'
 export { getChildSolutions } from './solutionsQuery'
 
+export { getProjectSlugs } from './projectsQuery'
 export { getProjectBySlug } from './projectsQuery'
 
 export { getArticleSlugs } from './articlesQuery'
