@@ -1,6 +1,7 @@
 import { client } from '../client'
 
 export const getSolutionBySlug = async (slug: string) => {
+  'use cache'
   const query = `
     *[_type == 'solution' && slug.current == $slug][0]{
       _id,
@@ -78,6 +79,7 @@ export const getChildSolutionWithParent = async (parentSlug: string, childSlug: 
 
 // New function for fetching just parent slugs (needed for generateStaticParams)
 export const getParentSolutionSlugs = async () => {
+  'use cache'
   const query = `
     *[_type == 'solution' && solutionType == 'parent']{
       slug
@@ -139,4 +141,19 @@ export const getRelatedArticlesBySolutionId = async (solutionId: string) => {
   `
 
   return client.fetch(query, { solutionId })
+}
+
+export const getParentSolutions = async () => {
+  'use cache'
+  const query = `
+    *[_type == 'solution' && solutionType == 'parent']{
+      _id,
+      title,
+      slug,
+      heroImage,
+      summary
+    }
+  `
+
+  return client.fetch(query)
 }

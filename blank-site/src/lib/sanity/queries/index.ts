@@ -17,3 +17,5 @@ export { getArticlesByEquipmentType } from './equipmentTypesQuery'
 export { getGlobalSettings } from './globalSettingsQuery'
 
 export { getPageBySlug } from './pagesQuery'
+
+export { getParentSolutions } from './solutionsQuery'

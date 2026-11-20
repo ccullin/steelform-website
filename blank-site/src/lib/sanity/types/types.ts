@@ -48,6 +48,25 @@ export interface ArticleType {
   heroImage?: HeroImageType
 }
 
+export interface SolutionType {
+  _id: string
+  title: string
+  solutionType: 'parent' | 'child'
+  parent?: {
+    _id: string
+    title: string
+    slug: SlugType
+  }
+  slug: SlugType
+  seo: {
+    title?: string
+    description?: string
+  }
+  heroImage: HeroImageType
+  summary?: string
+  mainContent: PortableTextBlockType[]
+}
+
 export interface ChildSolutionType {
   _id: string
   title: string
