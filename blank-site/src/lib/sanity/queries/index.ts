@@ -5,6 +5,7 @@ export { getChildSolutions } from './solutionsQuery'
 
 export { getProjectSlugs } from './projectsQuery'
 export { getProjectBySlug } from './projectsQuery'
+export { getProjectsForLandingPage } from './projectsQuery'
 
 export { getArticleSlugs } from './articlesQuery'
 export { getArticleBySlug } from './articlesQuery'

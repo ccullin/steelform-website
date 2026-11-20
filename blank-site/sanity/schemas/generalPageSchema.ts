@@ -23,7 +23,7 @@ export const generalPageSchema = defineType({
       title: 'Hero Image',
       type: 'imageWithAlt',
     }),
-        defineField({
+    defineField({
       name: 'seo',
       title: 'SEO Metadata',
       type: 'seo',

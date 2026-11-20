@@ -41,3 +41,19 @@ export const getProjectSlugs = async () => {
 
   return client.fetch(query)
 }
+
+export const getProjectsForLandingPage = async () => {
+  'use cache'
+  const query = `
+    *[_type == 'project'] | order(publishDate desc){
+      _id,
+      title,
+      slug,
+      publishDate,
+      heroImage,
+      summary
+    }
+  `
+
+  return client.fetch(query)
+}

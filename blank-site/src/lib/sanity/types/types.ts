@@ -42,6 +42,7 @@ export interface ProjectType {
   solutions?: SolutionType[]
   industries?: IndustryType[]
   equipmentTypes?: EquipmentType[]
+  publishDate?: string
 }
 
 export interface ArticleType {
