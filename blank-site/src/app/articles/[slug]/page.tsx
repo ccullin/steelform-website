@@ -8,9 +8,8 @@ import Link from 'next/link'
 export async function generateStaticParams() {
   const slugs = await getArticleSlugs()
   
-  return slugs.map((slug: any) => ({
-    slug: slug.slug
-  }))
+  return slugs.map((article: {slug: string}) => ({
+    slug: article.slug  }))
 }
 
 

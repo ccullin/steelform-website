@@ -7,6 +7,7 @@ export { getProjectBySlug } from './projectsQuery'
 
 export { getArticleSlugs } from './articlesQuery'
 export { getArticleBySlug } from './articlesQuery'
+export { getArticlesForLandingPage } from './articlesQuery'
 
 export { getIndustryBySlug } from './industriesQuery'
 export { getProjectsByIndustry } from './industriesQuery'

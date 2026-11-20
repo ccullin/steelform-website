@@ -46,6 +46,8 @@ export interface ArticleType {
   slug: SlugType
   summary?: string
   heroImage?: HeroImageType
+  publishDate?: string
+  mainContent?: PortableTextBlockType[]
 }
 
 export interface SolutionType {

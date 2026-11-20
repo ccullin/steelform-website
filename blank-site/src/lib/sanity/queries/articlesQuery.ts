@@ -1,4 +1,5 @@
 import { client } from '../client'
+import * as Types from '../types/types'
 
 export const getArticleBySlug = async (slug: string) => {
   'use cache'
@@ -24,6 +25,22 @@ export const getArticleSlugs = async () => {
   const query = `
     *[_type == 'article' && defined(slug.current)]{
       "slug": slug.current
+    }
+  `
+
+  return client.fetch(query)
+}
+
+export const getArticlesForLandingPage = async () => {
+  'use cache'
+  const query = `
+    *[_type == 'article'] | order(publishDate desc){
+      _id,
+      title,
+      slug,
+      publishDate,
+      heroImage,
+      summary
     }
   `
 
