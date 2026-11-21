@@ -25,6 +25,9 @@ export default function ContactForm() {
   ) => {
     e.preventDefault()
 
+    // Show submission coming soon message
+    alert('Submission coming soon! Our contact form is currently under development.')
+    
     console.log(formData)
 
     // API implementation later
@@ -35,6 +38,14 @@ export default function ContactForm() {
       <h2 className="text-2xl font-bold mb-6">
         Contact Us
       </h2>
+
+      {/* Submission coming soon message */}
+      <div className="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+        <p className="text-blue-800 text-center">
+          <span className="font-semibold">Submission coming soon!</span> Our contact form is currently under development. 
+          Please reach out to us via phone or email for immediate assistance.
+        </p>
+      </div>
 
       <form
         onSubmit={handleSubmit}
@@ -130,7 +141,7 @@ export default function ContactForm() {
 
         <button
           type="submit"
-          className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+          className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50"
         >
           Send Message
         </button>
