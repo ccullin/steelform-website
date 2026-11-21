@@ -4,6 +4,7 @@ import { urlFor } from '@/lib/sanity/image'
 import * as Types from '@/lib/sanity/types/types'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import Breadcrumb from '@/components/Breadcrumb'
 
 export async function generateStaticParams() {
   const slugs = await getProjectSlugs()
@@ -34,11 +35,13 @@ export default async function ProjectPage({
   return (
     <div className="max-w-4xl mx-auto py-8 px-4">
       {/* Breadcrumb */}
-      <nav className="mb-6 text-sm text-gray-500">
-        <Link href="/projects" className="hover:underline">Projects</Link>
-        {' > '}
-        <span className="text-gray-900">{project.title}</span>
-      </nav>
+      <Breadcrumb
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Projects', href: '/projects' },
+          { label: project.title },
+        ]}
+      />
 
       <h1 className="text-3xl font-bold mb-6">{project.title}</h1>
 

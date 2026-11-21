@@ -3,6 +3,7 @@ import { getParentSolutions } from '@/lib/sanity/queries/solutionsQuery'
 import Image from 'next/image'
 import { urlFor } from '@/lib/sanity/image'
 import Link from 'next/link'
+import Breadcrumb from '@/components/Breadcrumb'
 import * as Types from '@/lib/sanity/types/types'
 
 export default async function SolutionsLandingPage() {
@@ -25,10 +26,13 @@ export default async function SolutionsLandingPage() {
   return (
     <div className="max-w-4xl mx-auto py-8 px-4">
       {/* Breadcrumb */}
-      <nav className="mb-6 text-sm text-gray-500">
-        <span className="text-gray-900">Solutions</span>
-      </nav>
-      
+      <Breadcrumb
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Solutions', href: '/solutions' },
+        ]}
+      />
+
       <h1 className="text-3xl font-bold mb-6">{page.title}</h1>
       
       {page.heroImage && (

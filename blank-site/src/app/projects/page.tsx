@@ -4,12 +4,22 @@ import { urlFor } from '@/lib/sanity/image'
 import CallToAction from '@/components/CallToAction'
 import * as Types from '@/lib/sanity/types/types'
 import Link from 'next/link'
+import Breadcrumb from '@/components/Breadcrumb'
 
 export default async function ProjectsLandingPage() {
   const projects = await getProjectsForLandingPage()
 
   return (
     <div className="max-w-6xl mx-auto py-8 px-4">
+      {/* Breadcrumb */}
+      <Breadcrumb
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'projects' },
+        ]}
+      />
+
+
       {/* Page Header */}
       <header className="mb-12 text-center">
         <h1 className="text-4xl font-bold mb-4">Our Projects</h1>

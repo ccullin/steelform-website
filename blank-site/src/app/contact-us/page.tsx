@@ -2,6 +2,7 @@ import ContactForm from '@/components/ContactForm'
 import { getContactUsPageData } from '@/lib/sanity/queries/contactUsPageQuery'
 import Image from 'next/image'
 import Link from 'next/link'
+import Breadcrumb from '@/components/Breadcrumb'
 
 export default async function ContactUsPage() {
   const { page, globalSettings } = await getContactUsPageData()
@@ -16,13 +17,12 @@ const googleMapsUrl = globalSettings?.businessAddress
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Breadcrumb */}
-      <Link href="/" className="hover:underline">Home</Link>
-      {' > '}
-      <nav className="mb-6 text-sm text-gray-500">
-          <span className="text-gray-900">{page.title}</span>
-      </nav>
-
-
+      <Breadcrumb
+        items={[
+          { label: 'Home', href: '/' },
+          { label: page.title },
+        ]}
+      />
 
       {/* Hero Section */}
       {page?.heroImage && (

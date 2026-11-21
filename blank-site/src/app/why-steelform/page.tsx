@@ -5,6 +5,7 @@ import * as Types from '@/lib/sanity/types/types'
 import { notFound } from 'next/navigation'
 import CallToAction from '@/components/CallToAction'
 import Link from 'next/link'
+import Breadcrumb from '@/components/Breadcrumb'
 
 export default async function WhySteelformPage() {
   // Fetch the page by slug
@@ -18,11 +19,12 @@ export default async function WhySteelformPage() {
   return (
     <div className="max-w-4xl mx-auto py-8 px-4">
       {/* Breadcrumb */}
-      <Link href="/" className="hover:underline">Home</Link>
-      {' > '}
-      <nav className="mb-6 text-sm text-gray-500">
-          <span className="text-gray-900">{page.title}</span>
-      </nav>
+      <Breadcrumb
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Why Steelform', href: '/why-steelform' },
+        ]}
+      />
 
       {/* Hero Image */}
       {page.heroImage && (

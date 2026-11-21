@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { urlFor } from '@/lib/sanity/image'
 import * as Types from '@/lib/sanity/types/types'
+import Breadcrumb from '@/components/Breadcrumb'
 
 export default async function ArticlesLandingPage() {
   // Fetch all articles for the landing page
@@ -10,6 +11,14 @@ export default async function ArticlesLandingPage() {
   
   return (
     <div className="max-w-4xl mx-auto py-8 px-4">
+      {/* Breadcrumb */}
+      <Breadcrumb
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'artciles'},
+        ]}
+      />
+
       <h1 className="text-3xl font-bold mb-6">Articles</h1>
       
       <p className="mb-8 text-lg">

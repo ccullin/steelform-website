@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import { urlFor } from '@/lib/sanity/image'
 import Link from 'next/link'
+import Breadcrumb from '@/components/Breadcrumb'
 import * as Types from '@/lib/sanity/types/types'
 
 export async function generateStaticParams() {
@@ -38,12 +39,14 @@ export default async function ParentSolutionPage({
   return (
     <div className="max-w-4xl mx-auto py-8 px-4">
       {/* Breadcrumb */}
-      <nav className="mb-6 text-sm text-gray-500">
-        <Link href="/solutions" className="hover:underline">Solutions</Link>
-        {' > '}
-        <span className="text-gray-900">{parentSolution.title}</span>
-      </nav>
-      
+      <Breadcrumb
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Solutions', href: '/solutions' },
+          { label: parentSolution.title },
+        ]}
+      />
+
       <h1 className="text-3xl font-bold mb-6">{parentSolution.title}</h1>
       
       {parentSolution.heroImage && (
