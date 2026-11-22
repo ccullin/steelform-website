@@ -6,6 +6,7 @@ import { urlFor } from '@/lib/sanity/image'
 import Link from 'next/link'
 import * as Types from '@/lib/sanity/types/types'
 import Breadcrumb from '@/components/Breadcrumb'
+import CallToAction from '@/components/CallToAction'
 
 export async function generateStaticParams() {
   // Fetch all child solutions with their parent information
@@ -162,18 +163,8 @@ export default async function ChildSolutionPage({
       )}
 
       {/* Call-to-Action Section */}
-      <section className="mt-12 mb-12 bg-blue-50 rounded-lg p-8 text-center">
-        <h2 className="text-2xl font-bold mb-4">Interested in this solution?</h2>
-        <p className="mb-6 max-w-2xl mx-auto">
-          Learn more about how our solutions can help you achieve your goals.
-        </p>
-        <Link 
-          href="/contact" 
-          className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
-        >
-          Contact Us
-        </Link>
-      </section>
+      <CallToAction variant="solution" />
+
     </div>
   )
 }

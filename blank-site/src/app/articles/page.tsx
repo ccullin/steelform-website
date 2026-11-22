@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { urlFor } from '@/lib/sanity/image'
 import * as Types from '@/lib/sanity/types/types'
 import Breadcrumb from '@/components/Breadcrumb'
+import CallToAction from '@/components/CallToAction'
 
 export default async function ArticlesLandingPage() {
   // Fetch all articles for the landing page
@@ -70,14 +71,9 @@ export default async function ArticlesLandingPage() {
         </div>
       )}
       
-      {/* CTA Section */}
-      <div className="bg-blue-50 rounded-lg p-6 text-center mb-8">
-        <h3 className="text-xl font-bold mb-2">Stay Updated</h3>
-        <p className="mb-4">Subscribe to our newsletter for the latest articles and insights.</p>
-        <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg transition-colors">
-          Subscribe
-        </button>
-      </div>
+      {/* Call To Action Section */}
+      <CallToAction variant="article" />
+      
     </div>
   )
 }

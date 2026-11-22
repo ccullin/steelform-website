@@ -85,7 +85,10 @@ export default async function ProjectsLandingPage() {
           <p className="text-gray-500 text-lg">No projects found.</p>
         </div>
       )}
-      <CallToAction />
+
+      {/* Call To Action Section */}
+      <CallToAction variant="project" />
+      
     </div>
   )
 }

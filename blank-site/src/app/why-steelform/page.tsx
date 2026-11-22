@@ -3,9 +3,9 @@ import Image from 'next/image'
 import { urlFor } from '@/lib/sanity/image'
 import * as Types from '@/lib/sanity/types/types'
 import { notFound } from 'next/navigation'
-import CallToAction from '@/components/CallToAction'
 import Link from 'next/link'
 import Breadcrumb from '@/components/Breadcrumb'
+import CallToAction from '@/components/CallToAction'
 
 export default async function WhySteelformPage() {
   // Fetch the page by slug
@@ -18,6 +18,7 @@ export default async function WhySteelformPage() {
 
   return (
     <div className="max-w-4xl mx-auto py-8 px-4">
+
       {/* Breadcrumb */}
       <Breadcrumb
         items={[
@@ -78,7 +79,7 @@ export default async function WhySteelformPage() {
       )}
 
       {/* Call To Action */}
-      <CallToAction />
+      <CallToAction variant="why-steelform" />
 
       {/* SEO Metadata */}
       {page.seo && (

@@ -5,6 +5,7 @@ import * as Types from '@/lib/sanity/types/types'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Breadcrumb from '@/components/Breadcrumb'
+import CallToAction from '@/components/CallToAction'
 
 export default async function HomePage() {
   // Fetch homepage content
@@ -57,23 +58,8 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Why Steelform Teaser */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-6">Why Choose Steelform?</h2>
-            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-              As a leading steel fabrication company, we combine cutting-edge technology with decades of industry expertise to deliver exceptional results for our clients.
-            </p>
-            <Link 
-              href="/why-steelform" 
-              className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
-            >
-              Learn More About Us
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* Call To Action - Why Steelform Teaser */}
+      <CallToAction variant="home" />
 
       {/* Featured Solutions */}
       <section className="py-16">

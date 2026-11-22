@@ -5,6 +5,7 @@ import * as Types from '@/lib/sanity/types/types'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Breadcrumb from '@/components/Breadcrumb'
+import CallToAction from '@/components/CallToAction'
 
 export async function generateStaticParams() {
   const slugs = await getArticleSlugs()
@@ -79,6 +80,9 @@ export default async function ArticlePage({
           ))}
         </div>
       )}
+
+      {/* Call To Action Section */}
+      <CallToAction variant="article" />
 
       {/* SEO Metadata */}
       {article.seo && (
