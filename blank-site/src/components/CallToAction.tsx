@@ -7,6 +7,7 @@ type CallToActionVariant =
   | 'project'
   | 'why-steelform'
   | 'home'
+  | 'header'
 
 interface CallToActionProps {
   variant?: CallToActionVariant
@@ -53,6 +54,10 @@ const CTA_CONTENT: Record<CallToActionVariant, CTAContent> = {
     text: 'With 30 years in steel fabrication we have a track record you can bank on.',
     buttonText: 'Contact Us',
   },
+
+  header: {
+    buttonText: 'Get a Free Quote',
+  }
 }
 
 export default function CallToAction({

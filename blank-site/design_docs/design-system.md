@@ -398,3 +398,5 @@ Preferred Stack:
 Animations should be subtle.
 
 The website should feel professional and durable rather than trendy.
+
+Consistency beats creativity.

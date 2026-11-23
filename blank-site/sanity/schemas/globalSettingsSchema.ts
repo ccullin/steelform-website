@@ -65,18 +65,6 @@ export const globalSettingsSchema = defineType({
       ],
     }),
     defineField({
-      name: 'primaryCtaLabel',
-      title: 'Primary CTA Label',
-      type: 'string',
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
-      name: 'secondaryCtaLabel',
-      title: 'Secondary CTA Label',
-      type: 'string',
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
       name: 'logoForLightBackground',
       title: 'Logo (Light Background)',
       type: 'image',
