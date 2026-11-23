@@ -47,18 +47,19 @@ export default function Header({
       <div className="bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
           {/* Desktop Header */}
-          <div className="hidden lg:grid lg:grid-cols-3 items-center py-6">
+          <div className="hidden lg:grid items-center py-6"
+            style={{ gridTemplateColumns: 'auto 1fr auto', }}>
 
             {/* Column 1 - Logo */}
            <div className="flex justify-start items-center">
             <Link href="/" className="block">
               <Image
-                src="/branding/steelform-logo-light.svg"
+                src="/branding/steelform-logo-light-v1.svg"
                 alt="Steelform Engineering"
                 width={420}
-                height={120}
+                height={120}  
                 priority
-                className="w-auto h-[100px]"
+                // className="w-auto"
               />
             </Link>
           </div>
