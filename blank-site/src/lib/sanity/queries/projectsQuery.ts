@@ -1,7 +1,6 @@
 import { client } from '../client'
 
 export const getProjectBySlug = async (slug: string) => {
-  'use cache'
   const query = `
     *[_type == 'project' && slug.current == $slug][0]{
       _id,
@@ -32,7 +31,6 @@ export const getProjectBySlug = async (slug: string) => {
 }
 
 export const getProjectSlugs = async () => {
-  'use cache'
   const query = `
     *[_type == 'project' && defined(slug.current)]{
       "slug": slug.current
@@ -43,7 +41,6 @@ export const getProjectSlugs = async () => {
 }
 
 export const getProjectsForLandingPage = async () => {
-  'use cache'
   const query = `
     *[_type == 'project'] | order(publishDate desc){
       _id,

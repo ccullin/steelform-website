@@ -3,11 +3,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
-import {
-  Phone,
-  Mail,
-  Menu
-} from 'lucide-react';
+import {Phone, Mail, Menu} from 'lucide-react';
+import { usePathname } from "next/navigation";
 
 interface HeaderProps {
   globalSettings: any;
@@ -30,15 +27,14 @@ export default function Header({
   const linkedin = globalSettings?.socialLinks?.find(
   (link: any) => link.platform === 'linkedin'
   );
-  const youtube = globalSettings?.socialLinks?.find(
-  (link: any) => link.platform === 'youtube'
-  );
   const facebook = globalSettings?.socialLinks?.find(
   (link: any) => link.platform === 'facebook'
   );
   const instagram = globalSettings?.socialLinks?.find(
   (link: any) => link.platform === 'instagram'
   );
+
+  const pathname = usePathname();
   
 
   return (
@@ -46,6 +42,7 @@ export default function Header({
       {/* Top Brand Header */}
       <div className="bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
+          
           {/* Desktop Header */}
           <div className="hidden lg:grid items-center py-6"
             style={{ gridTemplateColumns: 'auto 1fr auto', }}>
@@ -59,7 +56,6 @@ export default function Header({
                 width={420}
                 height={120}  
                 priority
-                // className="w-auto"
               />
             </Link>
           </div>
@@ -142,9 +138,7 @@ export default function Header({
                 </a>
 
               </div>
-
             </div>
-
           </div>
 
           {/* Mobile Header */}
@@ -173,35 +167,84 @@ export default function Header({
       </div>
 
       {/* Navigation */}
-      <div className="bg-[#22333D]">
+      <div className="bg-steelform-primary border-b border-white/20">
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
 
-          <nav className="hidden lg:flex items-center justify-center gap-12 h-16">
-            {navigation.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="text-white uppercase tracking-wide font-medium hover:text-[#F27224] transition-colors"
-              >
-                {item.label}
-              </Link>
-            ))}
+          {/* <nav className="hidden lg:flex items-center justify-center gap-12 h-16">
+            {navigation.map((item) => {
+              const isActive = pathname === item.href;
+              
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`uppercase tracking-wide font-medium transition-colors ${isActive
+                      ? "text-steelform-accent opacity-70"
+                      : "text-white hover:text-steelform-accent"
+                    }`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+          </nav> */}
+
+          <nav className="hidden lg:flex items-center justify-center h-16">
+
+            {navigation.map((item, index) => {
+              const isActive = pathname === item.href;
+
+              return (
+                <div
+                  key={item.href}
+                  className="
+                    flex
+                    items-center
+                    h-full
+                  "
+                >
+                  {index > 0 && (
+                    <div className="h-2/5 w-px bg-white/20 mx-6" />
+                  )}
+
+                  <Link
+                    href={item.href}
+                    className={`uppercase tracking-wide font-medium transition-colors ${
+                      isActive
+                        ? 'text-steelform-accent opacity-70'
+                        : 'text-white hover:text-steelform-accent'
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                </div>
+              );
+            })}
+
           </nav>
 
           {/* Mobile Menu */}
           {isMenuOpen && (
             <div className="lg:hidden py-4">
               <div className="flex flex-col">
-                {navigation.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className="text-white py-3 border-b border-slate-600"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
+                {navigation.map((item) => {
+                  const isActive = pathname === item.href;
+                
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className={`py-3 border-b border-slate-600 ${isActive
+                        ? "text-steelform-light font-semibold"
+                        : "text-white hover:text-steelform-accent"
+                        }`}
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  );
+
+                })}
 
                 <Link
                   href="/contact-us"

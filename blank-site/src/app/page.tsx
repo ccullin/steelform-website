@@ -4,8 +4,6 @@ import { urlFor } from '@/lib/sanity/image'
 import * as Types from '@/lib/sanity/types/types'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import Breadcrumb from '@/components/Breadcrumb'
-import CallToAction from '@/components/CallToAction'
 import Container from '@/components/layout/Container'
 
 export default async function HomePage() {
@@ -26,7 +24,7 @@ export default async function HomePage() {
     <div className="min-h-screen">
       
       {/* Hero Section */}
-      <section className="py-16 bg-gray-800">
+      <section className="py-20 bg-steelform-primary">
         <Container>
           {page.heroImage && (
             <div className="mb-8">
@@ -37,8 +35,8 @@ export default async function HomePage() {
                 width={800}
                 height={450}
               />
-              <h1 className="text-3xl font-bold mb-6 text-center">{page.title}</h1>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 text-center text-white">{page.seo.title}</h1>
+              <p className="text-xl text-slate-200 max-w-3xl mx-auto text-center">
                 {whySteelform.summary}
               </p>
             </div>
@@ -48,11 +46,11 @@ export default async function HomePage() {
 
       
       {/* Featured Solutions */}
-      <section className="py-16">
+      <section className="py-20 bg-white">
         <Container>
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Our Core Solutions</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-steelform-primary">Our Core Solutions</h2>
+            <p className="text-xl text-steelform-primary max-w-3xl mx-auto text-center">
               Discover our range of steel fabrication solutions.
             </p>
           </div>
@@ -65,7 +63,7 @@ export default async function HomePage() {
                   href={`/solutions/${solution.slug.current}`}
                   className="block group"
                 >
-                  <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                  <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-slate-100">
                     {solution.heroImage && (
                       <div className="relative h-48 w-full">
                         <Image
@@ -78,18 +76,18 @@ export default async function HomePage() {
                     )}
                     
                     <div className="p-6">
-                      <h3 className="text-xl font-bold mb-2 group-hover:text-blue-600 transition-colors">
+                      <h3 className="text-xl font-bold mb-2 text-steelform-primary group-hover:text-steelform-accent transition-colors">
                         {solution.title}
                       </h3>
                       
                       {solution.summary && (
-                        <p className="text-gray-600 mb-4 line-clamp-2">
+                        <p className="text-steelform-secondary mb-4 line-clamp-2">
                           {solution.summary}
                         </p>
                       )}
                       
                       <div className="mt-4">
-                        <span className="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">
+                        <span className="inline-block bg-steelform-light text-steelform-primary text-xs px-2 py-1 rounded">
                           View Solution
                         </span>
                       </div>
@@ -107,12 +105,12 @@ export default async function HomePage() {
       </section>
 
       {/* Featured Projects */}
-      <section className="py-16 bg-gray-800">
+      <section className="py-20 bg-steelform-primary">
         <Container>
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Featured Projects</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Explore our latest projects and see how we've helped clients achieve their goals.
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Featured Projects</h2>
+            <p className="text-xl text-slate-200 max-w-3xl mx-auto text-center">
+              Explore our latest projects and see how we&apos;ve helped clients achieve their goals.
             </p>
           </div>
 
@@ -124,7 +122,7 @@ export default async function HomePage() {
                   href={`/projects/${project.slug.current}`}
                   className="block group"
                 >
-                  <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                  <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-slate-100">
                     {project.heroImage && (
                       <div className="relative h-48 w-full">
                         <Image
@@ -137,19 +135,19 @@ export default async function HomePage() {
                     )}
                     
                     <div className="p-6">
-                      <h3 className="text-xl font-bold mb-2 group-hover:text-blue-600 transition-colors">
+                      <h3 className="text-xl font-bold mb-2 text-steelform-primary group-hover:text-steelform-accent transition-colors">
                         {project.title}
                       </h3>
                       
                       
                       {project.summary && (
-                        <p className="text-gray-600 mb-4 line-clamp-2">
+                        <p className="text-steelform-secondary mb-4 line-clamp-2">
                           {project.summary}
                         </p>
                       )}
                       
                       <div className="mt-4">
-                        <span className="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">
+                        <span className="inline-block bg-steelform-light text-steelform-primary text-xs px-2 py-1 rounded">
                           View Project
                         </span>
                       </div>
@@ -167,16 +165,16 @@ export default async function HomePage() {
       </section>
 
       {/* Contact CTA */}
-      <section className="py-16 bg-gray-800">
+      <section className="py-20 bg-white">
         <Container>
-          <div className="max-w-4xl mx-auto text-white rounded-lg p-8 md:p-12 text-center">
-            <h2 className="text-3xl font-bold mb-4">Ready to Start Your Project?</h2>
-            <p className="text-xl mb-8 max-w-2xl mx-auto text-blue-100">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-steelform-primary">Ready to Start Your Project?</h2>
+            <p className="text-xl mb-8 max-w-2xl mx-auto text-steelform-secondary">
               Get in touch with our team today to discuss your requirements and how we can help you achieve your goals.
             </p>
             <Link 
               href="/contact-us" 
-              className="inline-block bg-white text-blue-900 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors shadow-lg"
+              className="inline-block bg-steelform-accent text-white px-8 py-4 rounded-lg font-bold hover:opacity-90 transition-opacity shadow-lg"
             >
               Contact Us Now
             </Link>

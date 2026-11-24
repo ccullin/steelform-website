@@ -1,7 +1,6 @@
 import ContactForm from '@/components/ContactForm'
 import { getContactUsPageData } from '@/lib/sanity/queries/contactUsPageQuery'
 import Image from 'next/image'
-import Link from 'next/link'
 import Breadcrumb from '@/components/Breadcrumb'
 
 export default async function ContactUsPage() {

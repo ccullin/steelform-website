@@ -1,7 +1,6 @@
 import { client } from '../client'
 
 export const getSolutionBySlug = async (slug: string) => {
-  'use cache'
   const query = `
     *[_type == 'solution' && slug.current == $slug][0]{
       _id,
@@ -24,7 +23,6 @@ export const getSolutionBySlug = async (slug: string) => {
 }
 
 export const getParentSolutionBySlug = async (slug: string) => {
-  'use cache'
   const query = `
     *[_type == 'solution' && solutionType == 'parent' && slug.current == $slug][0]{
       _id,
@@ -41,7 +39,6 @@ export const getParentSolutionBySlug = async (slug: string) => {
 }
 
 export const getChildSolutions = async (parentId: string) => {
-  'use cache'
   const query = `
     *[_type == 'solution' && solutionType == 'child' && references($parentId)]{
       _id,
@@ -55,7 +52,6 @@ export const getChildSolutions = async (parentId: string) => {
 }
 
 export const getChildSolutionWithParent = async (parentSlug: string, childSlug: string) => {
-  'use cache'
   const query = `
     *[_type == 'solution' && solutionType == 'child' && slug.current == $childSlug][0]{
       _id,
@@ -79,7 +75,6 @@ export const getChildSolutionWithParent = async (parentSlug: string, childSlug: 
 
 // New function for fetching just parent slugs (needed for generateStaticParams)
 export const getParentSolutionSlugs = async () => {
-  'use cache'
   const query = `
     *[_type == 'solution' && solutionType == 'parent']{
       slug
@@ -91,7 +86,6 @@ export const getParentSolutionSlugs = async () => {
 
 // Function to get all child solutions with parent info for static params generation
 export const getAllChildSolutionsWithParent = async () => {
-  'use cache'
   const query = `
     *[_type == 'solution' && solutionType == 'child']{
       _id,
@@ -114,7 +108,6 @@ export const getAllChildSolutionsWithParent = async () => {
 }
 
 export const getRelatedProjectsBySolutionId = async (solutionId: string) => {
-  'use cache'
   const query = `
     *[_type == 'project' && references($solutionId)]{
       _id,
@@ -129,7 +122,6 @@ export const getRelatedProjectsBySolutionId = async (solutionId: string) => {
 }
 
 export const getRelatedArticlesBySolutionId = async (solutionId: string) => {
-  'use cache'
   const query = `
     *[_type == 'article' && references($solutionId)]{
       _id,
@@ -144,7 +136,6 @@ export const getRelatedArticlesBySolutionId = async (solutionId: string) => {
 }
 
 export const getParentSolutions = async () => {
-  'use cache'
   const query = `
     *[_type == 'solution' && solutionType == 'parent']{
       _id,

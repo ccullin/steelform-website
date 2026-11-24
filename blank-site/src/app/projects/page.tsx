@@ -26,7 +26,7 @@ export default async function ProjectsLandingPage() {
       <header className="mb-12 text-center">
         <h1 className="text-4xl font-bold mb-4">Our Projects</h1>
         <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-          Explore our latest projects and see how we've helped clients achieve their goals.
+          Explore our latest projects and see how we&apos;ve helped clients achieve their goals.
         </p>
       </header>
 
@@ -39,7 +39,7 @@ export default async function ProjectsLandingPage() {
               href={`/projects/${project.slug.current}`}
               className="block group"
             >
-              <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+              <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-slate-100">
                 {/* Project Image */}
                 {project.heroImage && (
                   <div className="relative h-48 w-full">
@@ -67,13 +67,13 @@ export default async function ProjectsLandingPage() {
                   
                   {/* Summary */}
                   {project.summary && (
-                    <p className="text-gray-600 mb-4 line-clamp-2">
+                    <p className="text-steelform-secondary mb-4 line-clamp-2">
                       {project.summary}
                     </p>
                   )}
                   
                   <div className="mt-4">
-                    <span className="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">
+                    <span className="inline-block bg-steelform-light text-steelform-primary text-xs px-2 py-1 rounded">
                       View Project
                     </span>
                   </div>

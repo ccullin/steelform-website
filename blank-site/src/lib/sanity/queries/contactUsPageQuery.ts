@@ -2,7 +2,6 @@ import { client } from '../client'
 import { getGlobalSettings } from './globalSettingsQuery'
 
 export async function getContactUsPageData() {
-  'use cache'
   
   // Get the contact-us page content
   const page = await client.fetch(

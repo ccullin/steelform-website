@@ -66,29 +66,26 @@ export default function CallToAction({
   const content = CTA_CONTENT[variant]
 
   return (
-    <section className="cta-section mt-12 mb-12">
-      <div className="bg-blue-50 rounded-lg p-8 text-center">
+    <>
+      {content.heading && (
+        <h2 className="cta-heading text-2xl font-bold mb-4">
+          {content.heading}
+        </h2>
+      )}
 
-        {content.heading && (
-          <h2 className="cta-heading text-2xl font-bold mb-4">
-            {content.heading}
-          </h2>
-        )}
+      {content.text && (
+        <p className="cta-text mb-6 max-w-2xl mx-auto">
+          {content.text}
+        </p>
+      )}
 
-        {content.text && (
-          <p className="cta-text mb-6 max-w-2xl mx-auto">
-            {content.text}
-          </p>
-        )}
-
-        <Link
-          href="/contact-us"
-          className="cta-button inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
-        >
-          {content.buttonText}
-        </Link>
-
-      </div>
-    </section>
+      <Link 
+        href="/contact-us" 
+        className="inline-block bg-steelform-accent text-white px-8 py-4 rounded-lg font-bold hover:opacity-90 transition-opacity shadow-lg"
+      >
+        {content.buttonText}
+      </Link>
+      
+    </>
   )
 }

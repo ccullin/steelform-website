@@ -15,7 +15,7 @@ export default function Breadcrumb({
   items,
 }: BreadcrumbProps) {
   return (
-    <nav className="mb-6 text-sm text-gray-500 dark:text-gray-400">
+    <nav className="pt-4 mb-6 text-sm">
       {items.map((item, index) => {
         const isLast = index === items.length - 1
 
@@ -29,7 +29,7 @@ export default function Breadcrumb({
                 {item.label}
               </Link>
             ) : (
-              <span className="text-gray-900 dark:text-gray-100">
+              <span>
                 {item.label}
               </span>
             )}
