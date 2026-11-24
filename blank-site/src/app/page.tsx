@@ -7,7 +7,6 @@ import Link from 'next/link'
 import Breadcrumb from '@/components/Breadcrumb'
 import CallToAction from '@/components/CallToAction'
 import Container from '@/components/layout/Container'
-import WideContainer from '@/components/layout/WideContainer'
 
 export default async function HomePage() {
   // Fetch homepage content
@@ -26,45 +25,31 @@ export default async function HomePage() {
     <div className="min-h-screen">
 
       {/* Breadcrumb */}
-      <Container>
+      {/* <Container>
         <Breadcrumb
           items={[
             { label: 'Home', href: '/' },
           ]}
         />
-      </Container>
+      </Container> */}
       
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-blue-900 to-blue-700 text-white py-20 md:py-32">
-        <div className="absolute inset-0 bg-black opacity-40"></div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-              {page.title}
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 text-blue-100 max-w-2xl">
-              {page.summary}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link 
-                href="/contact-us" 
-                className="bg-white text-blue-900 px-8 py-4 rounded-lg font-bold text-center hover:bg-gray-100 transition-colors shadow-lg"
-              >
-                {'Contact Us'}
-              </Link>
-              <Link 
-                href="/solutions" 
-                className="bg-transparent border-2 border-white px-8 py-4 rounded-lg font-bold text-center hover:bg-white/10 transition-colors"
-              >
-                {'View Solutions'}
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Container>
+        <h1 className="text-3xl font-bold mb-6">{page.title}</h1>
+      </Container>
 
-      {/* Call To Action - Why Steelform Teaser */}
-      <CallToAction variant="home" />
+
+      {/* Hero Section */}
+      {page.heroImage && (
+        <div className="mb-8">
+          <Image
+            src={urlFor(page.heroImage.image).url()}
+            alt={page.heroImage.alt || ''}
+            className="w-full h-auto rounded-lg"
+            width={800}
+            height={450}
+          />
+        </div>
+      )}
 
       {/* Featured Solutions */}
       <section className="py-16">
