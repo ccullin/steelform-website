@@ -5,13 +5,14 @@ import { urlFor } from '@/lib/sanity/image'
 import * as Types from '@/lib/sanity/types/types'
 import Breadcrumb from '@/components/Breadcrumb'
 import CallToAction from '@/components/CallToAction'
+import ContentContainer from '@/components/layout/ContentContainer'
 
 export default async function ArticlesLandingPage() {
   // Fetch all articles for the landing page
   const articles = await getArticlesForLandingPage()
   
   return (
-    <div className="max-w-4xl mx-auto py-8 px-4">
+    <ContentContainer>
       {/* Breadcrumb */}
       <Breadcrumb
         items={[
@@ -74,6 +75,6 @@ export default async function ArticlesLandingPage() {
       {/* Call To Action Section */}
       <CallToAction variant="article" />
       
-    </div>
+    </ContentContainer>
   )
 }

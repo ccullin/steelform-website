@@ -6,6 +6,7 @@ import Link from 'next/link'
 import Breadcrumb from '@/components/Breadcrumb'
 import CallToAction from '@/components/CallToAction'
 import * as Types from '@/lib/sanity/types/types'
+import ContentContainer from '@/components/layout/ContentContainer'
 
 export default async function SolutionsLandingPage() {
   // Fetch the solutions landing page content
@@ -14,10 +15,10 @@ export default async function SolutionsLandingPage() {
   // If no page found, we could throw notFound or handle gracefully
   if (!page) {
     return (
-      <div className="max-w-4xl mx-auto py-8 px-4">
+      <ContentContainer>
         <h1 className="text-3xl font-bold mb-6">Solutions</h1>
         <p>Page content not found.</p>
-      </div>
+      </ContentContainer>
     )
   }
 
@@ -25,7 +26,7 @@ export default async function SolutionsLandingPage() {
   const parentSolutions = await getParentSolutions()
 
   return (
-    <div className="max-w-4xl mx-auto py-8 px-4">
+    <ContentContainer>
 
       {/* Breadcrumb */}
       <Breadcrumb
@@ -111,6 +112,6 @@ export default async function SolutionsLandingPage() {
       {/* Call-to-Action Section */}
       <CallToAction variant="solution-landing" />
 
-    </div>
+    </ContentContainer>
   )
 }

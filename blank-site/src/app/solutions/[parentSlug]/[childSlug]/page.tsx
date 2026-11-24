@@ -7,6 +7,7 @@ import Link from 'next/link'
 import * as Types from '@/lib/sanity/types/types'
 import Breadcrumb from '@/components/Breadcrumb'
 import CallToAction from '@/components/CallToAction'
+import ContentContainer from '@/components/layout/ContentContainer'
 
 export async function generateStaticParams() {
   // Fetch all child solutions with their parent information
@@ -43,7 +44,7 @@ export default async function ChildSolutionPage({
   ])
 
   return (
-    <div className="max-w-4xl mx-auto py-8 px-4">
+    <ContentContainer>
       {/* Breadcrumb */}
       <Breadcrumb
         items={[
@@ -165,6 +166,6 @@ export default async function ChildSolutionPage({
       {/* Call-to-Action Section */}
       <CallToAction variant="solution" />
 
-    </div>
+    </ContentContainer>
   )
 }

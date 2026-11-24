@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Breadcrumb from '@/components/Breadcrumb'
 import CallToAction from '@/components/CallToAction'
+import ContentContainer from '@/components/layout/ContentContainer'
 
 export async function generateStaticParams() {
   const slugs = await getProjectSlugs()
@@ -34,7 +35,7 @@ export default async function ProjectPage({
   }
 
   return (
-    <div className="max-w-4xl mx-auto py-8 px-4">
+    <ContentContainer>
       {/* Breadcrumb */}
       <Breadcrumb
         items={[
@@ -148,6 +149,6 @@ export default async function ProjectPage({
           {project.seo.description && <meta name="description" content={project.seo.description} />}
         </div>
       )}
-    </div>
+    </ContentContainer>
   )
 }

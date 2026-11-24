@@ -5,12 +5,14 @@ import CallToAction from '@/components/CallToAction'
 import * as Types from '@/lib/sanity/types/types'
 import Link from 'next/link'
 import Breadcrumb from '@/components/Breadcrumb'
+import WideContainer from '@/components/layout/WideContainer'
+
 
 export default async function ProjectsLandingPage() {
   const projects = await getProjectsForLandingPage()
 
   return (
-    <div className="max-w-6xl mx-auto py-8 px-4">
+    <WideContainer>
       {/* Breadcrumb */}
       <Breadcrumb
         items={[
@@ -89,6 +91,6 @@ export default async function ProjectsLandingPage() {
       {/* Call To Action Section */}
       <CallToAction variant="project" />
       
-    </div>
+    </WideContainer>
   )
 }

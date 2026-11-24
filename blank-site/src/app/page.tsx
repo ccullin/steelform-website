@@ -6,6 +6,8 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Breadcrumb from '@/components/Breadcrumb'
 import CallToAction from '@/components/CallToAction'
+import Container from '@/components/layout/Container'
+import WideContainer from '@/components/layout/WideContainer'
 
 export default async function HomePage() {
   // Fetch homepage content
@@ -22,12 +24,15 @@ export default async function HomePage() {
   
   return (
     <div className="min-h-screen">
+
       {/* Breadcrumb */}
-      <Breadcrumb
-        items={[
-          { label: 'Home', href: '/' },
-        ]}
-      />
+      <Container>
+        <Breadcrumb
+          items={[
+            { label: 'Home', href: '/' },
+          ]}
+        />
+      </Container>
       
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-blue-900 to-blue-700 text-white py-20 md:py-32">
@@ -63,7 +68,7 @@ export default async function HomePage() {
 
       {/* Featured Solutions */}
       <section className="py-16">
-        <div className="container mx-auto px-4">
+        <Container>
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Our Core Solutions</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -117,12 +122,12 @@ export default async function HomePage() {
               <p className="text-gray-500 text-lg">No solutions found.</p>
             </div>
           )}
-        </div>
+        </Container>
       </section>
 
       {/* Featured Projects */}
       <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
+        <Container>
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Featured Projects</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -177,12 +182,12 @@ export default async function HomePage() {
               <p className="text-gray-500 text-lg">No projects found.</p>
             </div>
           )}
-        </div>
+        </Container>
       </section>
 
       {/* Contact CTA */}
       <section className="py-16">
-        <div className="container mx-auto px-4">
+        <Container>
           <div className="max-w-4xl mx-auto bg-blue-900 text-white rounded-lg p-8 md:p-12 text-center">
             <h2 className="text-3xl font-bold mb-4">Ready to Start Your Project?</h2>
             <p className="text-xl mb-8 max-w-2xl mx-auto text-blue-100">
@@ -195,7 +200,7 @@ export default async function HomePage() {
               Contact Us Now
             </Link>
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* SEO Metadata */}
@@ -204,7 +209,7 @@ export default async function HomePage() {
           {page.seo.title && <title>{page.seo.title}</title>}
           {page.seo.description && <meta name="description" content={page.seo.description} />}
         </div>
-      )}
+        )}
     </div>
   )
 }
