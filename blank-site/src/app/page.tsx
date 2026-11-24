@@ -11,6 +11,7 @@ import Container from '@/components/layout/Container'
 export default async function HomePage() {
   // Fetch homepage content
   const page = await getPageBySlug('home')
+  const whySteelform = await getPageBySlug('why-steelform')
   
   // If no home page found, throw notFound to show 404 page
   if (!page) {
@@ -23,41 +24,36 @@ export default async function HomePage() {
   
   return (
     <div className="min-h-screen">
-
-      {/* Breadcrumb */}
-      {/* <Container>
-        <Breadcrumb
-          items={[
-            { label: 'Home', href: '/' },
-          ]}
-        />
-      </Container> */}
       
-      <Container>
-        <h1 className="text-3xl font-bold mb-6">{page.title}</h1>
-      </Container>
-
-
       {/* Hero Section */}
-      {page.heroImage && (
-        <div className="mb-8">
-          <Image
-            src={urlFor(page.heroImage.image).url()}
-            alt={page.heroImage.alt || ''}
-            className="w-full h-auto rounded-lg"
-            width={800}
-            height={450}
-          />
-        </div>
-      )}
+      <section className="py-16 bg-gray-800">
+        <Container>
+          {page.heroImage && (
+            <div className="mb-8">
+              <Image
+                src={urlFor(page.heroImage.image).url()}
+                alt={page.heroImage.alt || page.title}
+                className="w-full h-auto rounded-lg"
+                width={800}
+                height={450}
+              />
+              <h1 className="text-3xl font-bold mb-6 text-center">{page.title}</h1>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                {whySteelform.summary}
+              </p>
+            </div>
+          )}
+        </Container>
+      </section>
 
+      
       {/* Featured Solutions */}
       <section className="py-16">
         <Container>
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Our Core Solutions</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Discover our range of specialized steel fabrication services designed to meet your unique requirements.
+              Discover our range of steel fabrication solutions.
             </p>
           </div>
 
@@ -111,7 +107,7 @@ export default async function HomePage() {
       </section>
 
       {/* Featured Projects */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-gray-800">
         <Container>
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Featured Projects</h2>
@@ -171,9 +167,9 @@ export default async function HomePage() {
       </section>
 
       {/* Contact CTA */}
-      <section className="py-16">
+      <section className="py-16 bg-gray-800">
         <Container>
-          <div className="max-w-4xl mx-auto bg-blue-900 text-white rounded-lg p-8 md:p-12 text-center">
+          <div className="max-w-4xl mx-auto text-white rounded-lg p-8 md:p-12 text-center">
             <h2 className="text-3xl font-bold mb-4">Ready to Start Your Project?</h2>
             <p className="text-xl mb-8 max-w-2xl mx-auto text-blue-100">
               Get in touch with our team today to discuss your requirements and how we can help you achieve your goals.
