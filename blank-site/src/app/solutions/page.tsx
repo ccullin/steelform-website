@@ -6,7 +6,6 @@ import Link from 'next/link'
 import Breadcrumb from '@/components/Breadcrumb'
 import CallToAction from '@/components/CallToAction'
 import * as Types from '@/lib/sanity/types/types'
-import ContentContainer from '@/components/layout/ContentContainer'
 import WideContainer from '@/components/layout/WideContainer'
 
 export default async function SolutionsLandingPage() {

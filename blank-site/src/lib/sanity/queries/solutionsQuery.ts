@@ -44,6 +44,7 @@ export const getChildSolutions = async (parentId: string) => {
       _id,
       title,
       slug,
+      heroImage,
       summary
     }
   `
