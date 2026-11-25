@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation'
 import Breadcrumb from '@/components/Breadcrumb'
 import CallToAction from '@/components/CallToAction'
 import ContentContainer from '@/components/layout/ContentContainer'
+import WideContainer from '@/components/layout/WideContainer'
 
 export async function generateStaticParams() {
   const slugs = await getArticleSlugs()
@@ -34,63 +35,83 @@ export default async function ArticlePage({
   }
 
   return (
-    <ContentContainer>
+    <>
       {/* Breadcrumb */}
-      <Breadcrumb
-        items={[
-          { label: 'Home', href: '/' },
-          { label: 'Articles', href: '/articles' },
-          { label: article.title },
-        ]}
-      />
-
-      <h1 className="text-3xl font-bold mb-6">{article.title}</h1>
-
-      {article.heroImage && (
-        <div className="mb-8">
-          <Image
-            src={urlFor(article.heroImage.image).url()}
-            alt={article.heroImage.alt || ''}
-            className="w-full h-auto rounded-lg"
-            width={800}
-            height={450}
+      <section className="bg-steelform-primary text-white text-center py-1">
+        <WideContainer>
+          <Breadcrumb
+            items={[
+              { label: 'Home', href: '/' },
+              { label: 'Articles', href: '/articles' },
+              { label: article.title },
+            ]}
           />
-        </div>
-      )}
+        </WideContainer>
+      </section>
+        
 
-      {article.mainContent && (
-        <div className="prose max-w-none">
-          {article.mainContent.map((block: Types.PortableTextBlockType) => (
-            <div key={block._key}>
-              {block._type === 'block' && block.children?.map((child: Types.PortableTextChildType) => (
-                <p key={child.text}>{child.text}</p>
-              ))}
-              {block._type === 'image' && block.image?.asset?._ref && (
-                <div className="my-4">
-                  <Image
-                    src={urlFor(block.image).url()}
-                    alt=""
-                    className="w-full h-auto rounded-lg"
-                    width={800}
-                    height={450}
-                  />
-                </div>
-              )}
+      {/* Hero Section */}
+      <section className="bg-steelform-primary text-steelform-light text-center py-2">
+        <WideContainer>
+          <h1 className="text-3xl font-bold mb-6 text-white">{article.title}</h1>
+          {article.heroImage && (
+            <div className="mb-8">
+              <Image
+                src={urlFor(article.heroImage.image).url()}
+                alt={article.heroImage.alt || ''}
+                className="w-full h-auto rounded-lg"
+                width={800}
+                height={450}
+              />
             </div>
-          ))}
-        </div>
-      )}
+          )}
+        </WideContainer>
+      </section>
+
+      {/* Artcile Main Content */}
+      <section className="bg-white text-steelform-secondary py-6">
+        <ContentContainer>
+          {article.mainContent && (
+            <div className="prose max-w-none">
+              {article.mainContent.map((block: Types.PortableTextBlockType) => (
+                <div key={block._key}>
+                  {block._type === 'block' && block.children?.map((child: Types.PortableTextChildType) => (
+                    <p key={child.text}>{child.text}</p>
+                  ))}
+                  {block._type === 'image' && block.image?.asset?._ref && (
+                    <div className="my-4">
+                      <Image
+                        src={urlFor(block.image).url()}
+                        alt=""
+                        className="w-full h-auto rounded-lg"
+                        width={800}
+                        height={450}
+                      />
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+        </ContentContainer>
+      </section>
 
       {/* Call To Action Section */}
-      <CallToAction variant="article" />
+      <section className="bg-steelform-light text-steelform-secondary py-4">
+        <WideContainer>
+          <div className="text-center text-steelform-secondary">
+            <CallToAction variant="article" />
+          </div>
+        </WideContainer>
+      </section>
 
       {/* SEO Metadata */}
-      {article.seo && (
+      {/* {article.seo && (
         <div className="mt-8">
           {article.seo.title && <title>{article.seo.title}</title>}
           {article.seo.description && <meta name="description" content={article.seo.description} />}
         </div>
-      )}
-    </ContentContainer>
+      )} */}
+    </>
   )
 }

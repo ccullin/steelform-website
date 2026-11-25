@@ -12,85 +12,82 @@ export default async function ProjectsLandingPage() {
   const projects = await getProjectsForLandingPage()
 
   return (
-    <WideContainer>
+    <>
+      
       {/* Breadcrumb */}
-      <Breadcrumb
-        items={[
-          { label: 'Home', href: '/' },
-          { label: 'projects' },
-        ]}
-      />
+      <section className="bg-steelform-primary text-white text-center py-1">
+        <WideContainer>
+          <Breadcrumb
+            items={[
+              { label: 'Home', href: '/' },
+              { label: 'projects' },
+            ]}
+          />
+        </WideContainer>
+      </section>
+        
 
 
-      {/* Page Header */}
-      <header className="mb-12 text-center">
-        <h1 className="text-4xl font-bold mb-4">Our Projects</h1>
-        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-          Explore our latest projects and see how we&apos;ve helped clients achieve their goals.
-        </p>
-      </header>
+      {/* Hero Section */}
+      <section className="bg-steelform-primary text-steelform-light text-center py-2">
+        <WideContainer>
+          <h1 className="text-3xl font-bold mb-6 text-white">Completed Jobs for Reference</h1>
+          <p>Explore our latest projects and see how we\'ve helped customers.</p>
+        </WideContainer>
+      </section>
 
-      {/* Projects Grid */}
-      {projects && projects.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project: Types.ProjectType) => (
-            <Link 
-              key={project._id} 
-              href={`/projects/${project.slug.current}`}
-              className="block group"
-            >
-              <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-slate-100">
-                {/* Project Image */}
-                {project.heroImage && (
-                  <div className="relative h-48 w-full">
-                    <Image
-                      src={urlFor(project.heroImage.image).url()}
-                      alt={project.heroImage.alt || project.title}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                )}
-                
-                {/* Project Info */}
-                <div className="p-6">
-                  <h2 className="text-xl font-bold mb-2 group-hover:text-blue-600 transition-colors">
-                    {project.title}
-                  </h2>
+
+      {/* Project Card Gallery */}
+      <section className="bg-white text-steelform-secondary py-12">
+        {projects && projects.length > 0 && (
+          <WideContainer>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {projects.map((project: Types.ProjectType) => (
+                <Link 
+                  key={project._id} 
+                  href={`/projects/${project.slug.current}`}
+                  className="block border rounded-lg p-4 hover:shadow-md transition-shadow"
+                >
+                  {project.heroImage && (
+                    <div className="mb-4">
+                      <Image
+                        src={urlFor(project.heroImage.image).url()}
+                        alt={project.heroImage.alt || project.title}
+                        className="w-full h-auto rounded-lg object-cover"
+                        width={300}
+                        height={200}
+                      />
+                    </div>
+                  )}
+                  <h2 className="text-xl font-semibold mb-2">{project.title}</h2>
                   
                   {/* Publish Date */}
-                  {project.publishDate && (
+                  {/* {project.publishDate && (
                     <p className="text-sm text-gray-500 mb-3">
                       Published: {new Date(project.publishDate).toLocaleDateString()}
                     </p>
-                  )}
+                  )} */}
                   
                   {/* Summary */}
                   {project.summary && (
-                    <p className="text-steelform-secondary mb-4 line-clamp-2">
-                      {project.summary}
-                    </p>
+                    <p className="text-gray-600">{project.summary}</p>
                   )}
-                  
-                  <div className="mt-4">
-                    <span className="inline-block bg-steelform-light text-steelform-primary text-xs px-2 py-1 rounded">
-                      View Project
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-      ) : (
-        <div className="text-center py-12">
-          <p className="text-gray-500 text-lg">No projects found.</p>
-        </div>
-      )}
+                </Link>
+              ))}
+            </div>
+          </WideContainer>
+        )}
+      </section>
 
       {/* Call To Action Section */}
-      <CallToAction variant="project" />
+      <section className="bg-steelform-light text-steelform-secondary py-4">
+        <WideContainer>
+          <div className="text-center text-steelform-secondary">
+            <CallToAction variant="project" />
+          </div>
+        </WideContainer>
+      </section>
       
-    </WideContainer>
+    </>
   )
 }

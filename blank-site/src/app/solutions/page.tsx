@@ -58,7 +58,6 @@ export default async function SolutionsLandingPage() {
           <h1 className="text-3xl font-bold mb-6 text-white">{page.seo.title}</h1>
         )}
  
-          
         {page.summary && (
             <p>{page.summary}</p>    
         )}
@@ -89,39 +88,37 @@ export default async function SolutionsLandingPage() {
     </section>
 
     {/* Parent Solutions Cards Section */ }
-    <section className="bg-white text-steelform-secondary">
-      <WideContainer>
-        {parentSolutions && parentSolutions.length > 0 && (
-          <div className="mt-12 mb-12">
-            <h2 className="text-2xl font-bold mb-6">Solutions</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {parentSolutions.map((solution: Types.SolutionType) => (
-                <Link 
-                  key={solution._id} 
-                  href={`/solutions/${solution.slug.current}`}
-                  className="block border rounded-lg p-4 hover:shadow-md transition-shadow"
-                >
-                  {solution.heroImage && (
-                    <div className="mb-4">
-                      <Image
-                        src={urlFor(solution.heroImage.image).url()}
-                        alt={solution.heroImage.alt || solution.title}
-                        className="w-full h-auto rounded-lg object-cover"
-                        width={300}
-                        height={200}
-                      />
-                    </div>
-                  )}
-                  <h3 className="text-xl font-semibold mb-2">{solution.title}</h3>
-                  {solution.summary && (
-                    <p>{solution.summary}</p>
-                  )}
-                </Link>
-              ))}
-            </div>
+    <section className="bg-white text-steelform-secondary py-12">
+      {parentSolutions && parentSolutions.length > 0 && (
+        <WideContainer>
+          <h2 className="text-2xl font-bold mb-6">Solutions</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {parentSolutions.map((solution: Types.SolutionType) => (
+              <Link 
+                key={solution._id} 
+                href={`/solutions/${solution.slug.current}`}
+                className="block border rounded-lg p-4 hover:shadow-md transition-shadow"
+              >
+                {solution.heroImage && (
+                  <div className="mb-4">
+                    <Image
+                      src={urlFor(solution.heroImage.image).url()}
+                      alt={solution.heroImage.alt || solution.title}
+                      className="w-full h-auto rounded-lg object-cover"
+                      width={300}
+                      height={200}
+                    />
+                  </div>
+                )}
+                <h3 className="text-xl font-semibold mb-2">{solution.title}</h3>
+                {solution.summary && (
+                  <p>{solution.summary}</p>
+                )}
+              </Link>
+            ))}
           </div>
-        )}
-      </WideContainer>
+        </WideContainer>
+      )}
     </section>
 
 

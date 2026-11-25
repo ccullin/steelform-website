@@ -34,6 +34,8 @@ const CTA_CONTENT: Record<CallToActionVariant, CTAContent> = {
   },
 
   article: {
+    heading: 'Got a question about your project?',
+    text: 'Ask us and we\'ll help if we can.',
     buttonText: 'Contact Us',
   },
     

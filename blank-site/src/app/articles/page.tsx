@@ -6,75 +6,93 @@ import * as Types from '@/lib/sanity/types/types'
 import Breadcrumb from '@/components/Breadcrumb'
 import CallToAction from '@/components/CallToAction'
 import ContentContainer from '@/components/layout/ContentContainer'
+import WideContainer from '@/components/layout/WideContainer'
 
 export default async function ArticlesLandingPage() {
   // Fetch all articles for the landing page
   const articles = await getArticlesForLandingPage()
   
   return (
-    <ContentContainer>
+    <>
       {/* Breadcrumb */}
-      <Breadcrumb
-        items={[
-          { label: 'Home', href: '/' },
-          { label: 'artciles'},
-        ]}
-      />
+      <section className="bg-steelform-primary text-white text-center py-1">
+        <WideContainer>
+          <Breadcrumb
+            items={[
+              { label: 'Home', href: '/' },
+              { label: 'artciles'},
+            ]}
+          />
+        </WideContainer>
+      </section>
 
-      <h1 className="text-3xl font-bold mb-6">Articles</h1>
-      
-      <p className="mb-8 text-lg">
-        View our latest articles and insights.
-      </p>
+      {/* Hero Section */}
+      <section className="bg-steelform-primary text-steelform-light text-center py-2">
+        <WideContainer>
+          <h1 className="text-3xl font-bold mb-6 text-white">Industry and steel fabrication related articles.</h1>
+          <p>You can find equipment, industry, solution and product related articles from the main menu</p>
+        </WideContainer>
+      </section>
       
       {/* Article Card Gallery */}
-      {articles && articles.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-          {articles.map((article: Types.ArticleType) => (
-            <Link 
-              key={article._id} 
-              href={`/articles/${article.slug.current}`}
-              className="block group"
-            >
-              <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                {article.heroImage && article.heroImage.image && (
-                  <div className="h-48 w-full relative">
-                    <Image
-                      src={urlFor(article.heroImage.image).width(600).height(400).fit('crop').url()}
-                      alt={article.heroImage.alt || article.title}
-                      fill
-                      className="object-cover"
-                    />
+      <section className="bg-white text-steelform-secondary py-12">
+        {articles && articles.length > 0 ? (
+          <WideContainer>
+            <h2 className="text-2xl font-bold mb-6">Articles</h2>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+              {articles.map((article: Types.ArticleType) => (
+                <Link 
+                  key={article._id} 
+                  href={`/articles/${article.slug.current}`}
+                  className="block border rounded-lg p-4 hover:shadow-md transition-shadow"
+                >
+                  <div className="mb-4">
+                    {article.heroImage && article.heroImage.image && (
+                      <div className="w-full h-auto rounded-lg object-cover">
+                        <Image
+                          src={urlFor(article.heroImage.image).width(600).height(400).fit('crop').url()}
+                          alt={article.heroImage.alt || article.title}
+                          className="w-full h-auto rounded-lg object-cover"
+                          width={300}
+                          height={200}
+                        />
+                      </div>
+                    )}
+                    <div className="p-6">
+                      <h3 className="text-xl font-semibold mb-2">
+                        {article.title}
+                      </h3>
+                      {article.publishDate && (
+                        <p className="text-xl font-semibold mb-2">
+                          Published: {new Date(article.publishDate).toLocaleDateString()}
+                        </p>
+                      )}
+                      {article.summary && (
+                        <p className="text-gray-600">
+                          {article.summary}
+                        </p>
+                      )}
+                    </div>
                   </div>
-                )}
-                <div className="p-6">
-                  <h2 className="text-xl font-bold mb-2 group-hover:text-blue-600 transition-colors">
-                    {article.title}
-                  </h2>
-                  {article.publishDate && (
-                    <p className="text-gray-500 text-sm mb-3">
-                      Published: {new Date(article.publishDate).toLocaleDateString()}
-                    </p>
-                  )}
-                  {article.summary && (
-                    <p className="text-gray-700 line-clamp-2">
-                      {article.summary}
-                    </p>
-                  )}
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-      ) : (
-        <div className="text-center py-12">
-          <p className="text-gray-500">No articles found.</p>
-        </div>
-      )}
+                </Link>
+              ))}
+            </div>
+          </WideContainer>
+        ) : (
+          <div>
+            <p>No articles found.</p>
+          </div>
+        )}
+      </section>
       
       {/* Call To Action Section */}
-      <CallToAction variant="article" />
-      
-    </ContentContainer>
+      <section className="bg-steelform-light text-steelform-secondary py-4">
+        <WideContainer>
+          <div className="text-center text-steelform-secondary">
+            <CallToAction variant="article" />
+          </div>
+        </WideContainer>
+      </section>
+    </>
   )
 }

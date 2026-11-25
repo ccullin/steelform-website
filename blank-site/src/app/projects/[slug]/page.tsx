@@ -7,6 +7,7 @@ import Link from 'next/link'
 import Breadcrumb from '@/components/Breadcrumb'
 import CallToAction from '@/components/CallToAction'
 import ContentContainer from '@/components/layout/ContentContainer'
+import WideContainer from '@/components/layout/WideContainer'
 
 export async function generateStaticParams() {
   const slugs = await getProjectSlugs()
@@ -35,58 +36,68 @@ export default async function ProjectPage({
   }
 
   return (
-    <ContentContainer>
+    <>
       {/* Breadcrumb */}
-      <Breadcrumb
-        items={[
-          { label: 'Home', href: '/' },
-          { label: 'Projects', href: '/projects' },
-          { label: project.title },
-        ]}
-      />
-
-      <h1 className="text-3xl font-bold mb-6">{project.title}</h1>
-
-      {/* Hero Image */}
-      {project.heroImage && (
-        <div className="mb-8">
-          <Image
-            src={urlFor(project.heroImage.image).url()}
-            alt={project.heroImage.alt || project.title}
-            className="w-full h-auto rounded-lg"
-            width={800}
-            height={450}
+      <section className="bg-steelform-primary text-white text-center py-1">
+        <WideContainer>
+          <Breadcrumb
+            items={[
+              { label: 'Home', href: '/' },
+              { label: 'Projects', href: '/projects' },
+              { label: project.title },
+            ]}
           />
-        </div>
-      )}
+        </WideContainer>
+      </section>
 
-      {/* Summary */}
-      {project.summary && (
-        <p className="text-xl text-gray-600 mb-8">{project.summary}</p>
-      )}
+      {/* Hero Section */}
+      <section className="bg-steelform-primary text-steelform-light text-center py-2">
+        <WideContainer>
+          <h1 className="text-3xl font-bold mb-6 text-white">{project.title}</h1>
+          {project.heroImage && (
+            <div className="mb-8">
+              <Image
+                src={urlFor(project.heroImage.image).url()}
+                alt={project.heroImage.alt || project.title}
+                className="w-full h-auto rounded-lg"
+                width={800}
+                height={450}
+              />
+            </div>
+          )}
+          {/* Summary */}
+          {project.summary && (
+            <p>{project.summary}</p>
+          )}
+        </WideContainer>
+      </section>
+
+
 
       {/* Gallery Section */}
-      {project.gallery && project.gallery.length > 0 && (
-        <section className="mb-12">
-          <h2 className="text-2xl font-bold mb-6">Project Gallery</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {project.gallery.map((image: Types.HeroImageType, index: number) => (
-              <div key={index} className="mb-4">
-                <Image
-                  src={urlFor(image.image).url()}
-                  alt={image.alt || project.title}
-                  className="w-full h-auto rounded-lg object-cover"
-                  width={300}
-                  height={200}
-                />
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
+      <section className="bg-white text-steelform-secondary py-12">
+        {project.gallery && project.gallery.length > 0 && (
+          <WideContainer>
+            <h2 className="text-2xl font-bold mb-6">Project Gallery</h2>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+              {project.gallery.map((image: Types.HeroImageType, index: number) => (
+                <div key={index} className="mb-4">
+                  <Image
+                    src={urlFor(image.image).url()}
+                    alt={image.alt || project.title}
+                    className="w-full h-auto rounded-lg object-cover"
+                    width={300}
+                    height={200}
+                  />
+                </div>
+              ))}
+            </div>
+          </WideContainer>
+        )}
+      </section>
 
       {/* Solutions Used Section */}
-      {project.solutions && project.solutions.length > 0 && (
+      {/* {project.solutions && project.solutions.length > 0 && (
         <section className="mb-12">
           <h2 className="text-2xl font-bold mb-6">Solutions Used</h2>
           <div className="flex flex-wrap gap-2">
@@ -101,7 +112,7 @@ export default async function ProjectPage({
             ))}
           </div>
         </section>
-      )}
+      )} */}
 
       {/* Industries Section */}
       {/* {project.industries && project.industries.length > 0 && (
@@ -140,15 +151,14 @@ export default async function ProjectPage({
       )} */}
 
       {/* Call To Action Section */}
+      <section className="bg-steelform-light text-steelform-secondary py-4">
+        <WideContainer>
+          <div className="text-center text-steelform-secondary">
             <CallToAction variant="project" />
+          </div>
+        </WideContainer>
+      </section>
 
-      {/* SEO Metadata */}
-      {project.seo && (
-        <div className="mt-8">
-          {project.seo.title && <title>{project.seo.title}</title>}
-          {project.seo.description && <meta name="description" content={project.seo.description} />}
-        </div>
-      )}
-    </ContentContainer>
+    </>
   )
 }

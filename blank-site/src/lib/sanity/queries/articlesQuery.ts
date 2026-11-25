@@ -36,6 +36,7 @@ export const getArticlesForLandingPage = async () => {
       slug,
       publishDate,
       heroImage,
+      seo,
       summary
     }
   `
